@@ -13,6 +13,9 @@ public class ErrorException {
         this.exceptionMessage = exceptionMessage;
         this.exceptionCode = exceptionCode;
     }
+    public ErrorException(String exceptionMessage) {
+        this.exceptionMessage = exceptionMessage;
+    }
 
     public String getExceptionMessage() {
         return exceptionMessage;

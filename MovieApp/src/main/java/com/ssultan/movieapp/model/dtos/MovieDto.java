@@ -1,48 +1,24 @@
-package com.ssultan.movieapp.entity;
+package com.ssultan.movieapp.model.dtos;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 
-@Entity
-@Table(name = "movie")
-public class Movie {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "movie_id")
-    private Long id;
-
-    @Column(name = "movie_title")
+public class MovieDto {
     private String title;
-
-    @Column(name = "movie_type")
     private String type;
-
-    @Column(name = "movie_imdb_id")
     private String imdbId;
-
-    @Column(name = "movie_year")
     private String year;
-
-    @Column(name = "movie_poster")
     private String poster;
 
-    public Movie() {}
+    public MovieDto(){
 
-    public Movie(Long id, String title, String type, String imdbId, String year, String poster) {
-        this.id = id;
+    }
+
+    public MovieDto(String title, String type, String imdbId, String year, String poster) {
         this.title = title;
         this.type = type;
         this.imdbId = imdbId;
         this.year = year;
         this.poster = poster;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -87,9 +63,8 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+        return "MovieDto{" +
+                "title='" + title + '\'' +
                 ", type='" + type + '\'' +
                 ", imdbId='" + imdbId + '\'' +
                 ", year='" + year + '\'' +
