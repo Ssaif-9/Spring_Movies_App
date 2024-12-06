@@ -1,6 +1,5 @@
 package com.ssultan.movieapp.entity;
 
-import com.ssultan.movieapp.model.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -27,15 +26,15 @@ public class Account {
     private String email;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     @Column(name = "account_role")
-    private Role role;
+    private String role;
 
     public Account() {
 
     }
 
-    public Account(Long id, String username, String password, String email, Role role) {
+    public Account(Long id, String username, String password, String email, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -75,11 +74,11 @@ public class Account {
         this.email = email;
     }
 
-    public @NotNull Role getRole() {
+    public @NotNull String getRole() {
         return role;
     }
 
-    public void setRole(@NotNull Role role) {
+    public void setRole(@NotNull String role) {
         this.role = role;
     }
 }
