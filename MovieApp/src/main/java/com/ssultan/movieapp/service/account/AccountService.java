@@ -7,5 +7,7 @@ import org.springframework.stereotype.Service;
 public interface AccountService {
 
     void addAccount(Account account);
-    Account getAccount(Long accountId);
+    Account getAccountById(Long accountId);
+    Account getAccountByEmail(String accountEmail);
+    Account getAccountByUsername(String accountUsername);
 }

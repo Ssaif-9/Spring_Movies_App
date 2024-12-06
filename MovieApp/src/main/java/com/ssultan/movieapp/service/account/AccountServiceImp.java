@@ -1,9 +1,12 @@
 package com.ssultan.movieapp.service.account;
 
 import com.ssultan.movieapp.entity.Account;
+import com.ssultan.movieapp.exception.InvalidAccountDataException;
 import com.ssultan.movieapp.reposatiry.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AccountServiceImp implements AccountService {
@@ -21,7 +24,21 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public Account getAccount(Long accountId) {
+    public Account getAccountById(Long accountId){
+        Optional<Account> account = accountRepo.findById(accountId);
+        if (account.isEmpty()) {
+            throw new InvalidAccountDataException("Not Fount Account With id :"+accountId,"404");
+        }
         return accountRepo.findById(accountId).get();
+    }
+
+    @Override
+    public Account getAccountByEmail(String accountEmail) {
+        return accountRepo.findByEmail(accountEmail);
+    }
+
+    @Override
+    public Account getAccountByUsername(String accountUsername) {
+        return accountRepo.findByUsername(accountUsername);
     }
 }
