@@ -8,8 +8,12 @@ import com.ssultan.movieapp.model.dtos.MovieDto;
 import com.ssultan.movieapp.model.requests.MovieOmdbRequest;
 import com.ssultan.movieapp.reposatiry.MovieRepo;
 import com.ssultan.movieapp.utils.MovieUtil;
+import com.ssultan.movieapp.model.PageResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -152,6 +156,27 @@ public class MovieServiceImpl implements MovieService {
             throw new NotFoundMovieException("not found");
         }
         return movies.stream().map(movie ->modelMapper.map(movie,MovieDto.class)).collect(Collectors.toList());
+    }
+
+    public PageResponse<Movie> getAllMovies(Integer pageNumber, Integer pageSize)  {
+
+        Pageable paging;
+        paging = PageRequest.of(pageNumber, pageSize);
+
+        Page<MovieDto> pagedResult = movieRepo.findAll(paging)
+                .map(movie -> modelMapper.map(movie,MovieDto.class));
+
+        if (pagedResult.hasContent()) {
+            PageResponse<Movie> moviePage = new PageResponse<>();
+            moviePage.setTotalPages(pagedResult.getTotalPages());
+            moviePage.setTotalElements(pagedResult.getTotalElements());
+            moviePage.setEntity(pagedResult.getContent());
+
+            return moviePage;
+        } else {
+            throw new NotFoundMovieException("There's no movie in database or " +
+                    "Invalid paging or sorting params or content does not exist");
+        }
     }
 
 }

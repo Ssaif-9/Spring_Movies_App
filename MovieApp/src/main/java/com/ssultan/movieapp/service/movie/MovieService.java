@@ -4,6 +4,7 @@ import com.ssultan.movieapp.entity.Movie;
 import com.ssultan.movieapp.model.MovieFullInfo;
 import com.ssultan.movieapp.model.dtos.MovieDto;
 import com.ssultan.movieapp.model.requests.MovieOmdbRequest;
+import com.ssultan.movieapp.model.PageResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,10 @@ public interface MovieService {
     MovieFullInfo getMovieByImdbId(String movieImdbId);
     List<MovieDto> getMovieByYear(String movieYear);
 
+    PageResponse<Movie> getAllMovies(Integer pageNumber, Integer pageSize) ;
 
 
 }
+
+
+

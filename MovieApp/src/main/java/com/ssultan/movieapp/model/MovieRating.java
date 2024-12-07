@@ -1,7 +1,11 @@
 package com.ssultan.movieapp.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MovieRating {
+    @SerializedName("Source")
     private String source;
+    @SerializedName("Value")
     private String value;
     public MovieRating(String source, String value) {
         this.source = source;

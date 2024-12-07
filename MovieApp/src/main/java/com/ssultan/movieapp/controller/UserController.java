@@ -1,11 +1,13 @@
 package com.ssultan.movieapp.controller;
 
+import com.ssultan.movieapp.entity.Movie;
 import com.ssultan.movieapp.exception.AlreadyExistMovieException;
 import com.ssultan.movieapp.exception.ErrorException;
 import com.ssultan.movieapp.exception.NotFoundMovieException;
 import com.ssultan.movieapp.model.MovieFullInfo;
 import com.ssultan.movieapp.model.dtos.MovieDto;
 import com.ssultan.movieapp.service.movie.MovieService;
+import com.ssultan.movieapp.model.PageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,11 @@ public class UserController {
     @GetMapping
     public List<MovieDto> getAllMovies(){
         return movieService.getAllMovies();
+    }
+
+    @GetMapping("/page/{pageNo}")
+    public PageResponse<Movie> getAllMovies(@PathVariable Integer pageNo) {
+            return movieService.getAllMovies(pageNo - 1, 5);
     }
 
     @GetMapping("/{movieId}")
