@@ -16,8 +16,8 @@ public class MovieUtil {
 
 
 
-    public static MovieFullInfo getAllMovieDetailsByImdbId(String imdbId, String movieType) throws NotFoundMovieException,JsonParseException {
-        String requestUrl ="http://www.omdbapi.com/?i="+imdbId+"&plot="+movieType+"&apikey="+apiKey;
+    public static MovieFullInfo getAllMovieDetailsByImdbId(String imdbId) throws NotFoundMovieException,JsonParseException {
+        String requestUrl ="http://www.omdbapi.com/?i="+imdbId+"&apikey="+apiKey;
 
         RestTemplate restTemplate = new RestTemplate();
         String responseResult =restTemplate.getForObject(requestUrl,String.class);
@@ -34,8 +34,8 @@ public class MovieUtil {
         return movieFullInfo;
     }
 
-    public static MovieFullInfo getAllMovieDetailsByTitleAndYear(String movieTitle,String movieYear,String movieType) throws NotFoundMovieException,JsonParseException {
-        String requestUrl = "http://www.omdbapi.com/?t="+movieTitle+"&y="+movieYear+"&plot="+movieType+"&apikey="+apiKey;
+    public static MovieFullInfo getAllMovieDetailsByTitleAndYear(String movieTitle,String movieYear) throws NotFoundMovieException,JsonParseException {
+        String requestUrl = "http://www.omdbapi.com/?t="+movieTitle+"&y="+movieYear+"&apikey="+apiKey;
 
         RestTemplate restTemplate=new RestTemplate();
         String responseResult =restTemplate.getForObject(requestUrl,String.class);

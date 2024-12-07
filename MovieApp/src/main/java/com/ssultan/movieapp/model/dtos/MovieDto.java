@@ -8,17 +8,19 @@ public class MovieDto {
     private String imdbId;
     private String year;
     private String poster;
+    private String actors;
 
     public MovieDto(){
 
     }
 
-    public MovieDto(String title, String type, String imdbId, String year, String poster) {
+    public MovieDto(String title, String type, String imdbId, String year, String poster, String actors) {
         this.title = title;
         this.type = type;
         this.imdbId = imdbId;
         this.year = year;
         this.poster = poster;
+        this.actors = actors;
     }
 
     public String getTitle() {
@@ -60,6 +62,13 @@ public class MovieDto {
     public void setPoster(String poster) {
         this.poster = poster;
     }
+    public String getActors() {
+        return actors;
+    }
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
+
 
     @Override
     public String toString() {
@@ -69,6 +78,8 @@ public class MovieDto {
                 ", imdbId='" + imdbId + '\'' +
                 ", year='" + year + '\'' +
                 ", poster='" + poster + '\'' +
+                ", actors='" + actors + '\'' +
                 '}';
     }
+
 }

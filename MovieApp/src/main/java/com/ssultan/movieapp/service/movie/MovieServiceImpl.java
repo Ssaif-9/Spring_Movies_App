@@ -1,6 +1,7 @@
 package com.ssultan.movieapp.service.movie;
 
 import com.ssultan.movieapp.entity.Movie;
+import com.ssultan.movieapp.exception.AlreadyExistMovieException;
 import com.ssultan.movieapp.exception.NotFoundMovieException;
 import com.ssultan.movieapp.model.MovieFullInfo;
 import com.ssultan.movieapp.model.dtos.MovieDto;
@@ -32,7 +33,10 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public MovieDto saveMovieByImdbId(MovieOmdbRequest movie) {
-        MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId(),movie.getType());
+        if (movieRepo.existsByImdbId(movie.getImdbId())) {
+            throw new AlreadyExistMovieException("already Exist");
+        }
+        MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
         Movie Localmovie = modelMapper.map(movieFullInfo, Movie.class);
         movieRepo.save(Localmovie);
         return  modelMapper.map(movieFullInfo, MovieDto.class);
@@ -40,16 +44,21 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public MovieDto saveMovieByImdbTitleAndYear(MovieOmdbRequest movie) {
-        MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByTitleAndYear(movie.getTitle(),movie.getYear(),movie.getType());
-        System.out.println(movieFullInfo.toString());
+
+        if (movieRepo.existsByTitle(movie.getTitle())) {
+            throw new AlreadyExistMovieException("already Exist");
+        }
+        MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByTitleAndYear(movie.getTitle(),movie.getYear());
         Movie Localmovie = modelMapper.map(movieFullInfo, Movie.class);
-        System.out.println(Localmovie.toString());
         movieRepo.save(Localmovie);
         return  modelMapper.map(movieFullInfo, MovieDto.class);
     }
 
     @Override
     public void deleteMovie(Long movieId) {
+        if (movieRepo.existsById(movieId)) {
+            throw new NotFoundMovieException("NO Movie To Delete");
+        }
         movieRepo.deleteById(movieId);
     }
 
@@ -63,10 +72,38 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public MovieFullInfo getMovie(Long movieId) {
+    public MovieFullInfo getMovieById(Long movieId) {
         Movie movie = movieRepo.findById(movieId).orElse(new Movie());
         if (movie.getImdbId()==null)
             throw new NotFoundMovieException("not found");
-        return MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId(),"FULL");
+        return MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
     }
+
+    @Override
+    public MovieFullInfo getMovieByTitle(String movieTitle) {
+        if (!movieRepo.existsByTitle(movieTitle)) {
+            throw new NotFoundMovieException("not found");
+        }
+        Movie movie = movieRepo.findByTitle(movieTitle);
+        return MovieUtil.getAllMovieDetailsByTitleAndYear(movie.getTitle(),movie.getYear());
+    }
+
+    @Override
+    public MovieFullInfo getMovieByImdbId(String movieImdbId) {
+        if (!movieRepo.existsByImdbId(movieImdbId)) {
+            throw new NotFoundMovieException("not found");
+        }
+        Movie movie = movieRepo.findByImdbId(movieImdbId);
+        return MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
+    }
+
+    @Override
+    public List<MovieDto> getMovieByYear(String movieYear) {
+        List<Movie> movies = movieRepo.findByYear(movieYear);
+        if (movies.isEmpty()){
+            throw new NotFoundMovieException("not found");
+        }
+        return movies.stream().map(movie ->modelMapper.map(movie,MovieDto.class)).collect(Collectors.toList());
+    }
+
 }

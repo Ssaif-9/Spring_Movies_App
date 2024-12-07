@@ -10,11 +10,19 @@ import java.util.List;
 
 @Service
 public interface MovieService {
-
+    //For Admin
     MovieDto saveMovieByImdbId(MovieOmdbRequest movie);
     MovieDto saveMovieByImdbTitleAndYear(MovieOmdbRequest movie);
     void deleteMovie(Long movieId);
 
+    //For User
     List<MovieDto> getAllMovies();
-    MovieFullInfo getMovie(Long movieId);
+    MovieFullInfo getMovieById(Long movieId);
+
+    MovieFullInfo getMovieByTitle(String movieTitle);
+    MovieFullInfo getMovieByImdbId(String movieImdbId);
+    List<MovieDto> getMovieByYear(String movieYear);
+
+
+
 }

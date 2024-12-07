@@ -4,27 +4,23 @@ public class MovieOmdbRequest {
     private String imdbId;
     private String title;
     private String year;
-    private String type;
 
     public MovieOmdbRequest() {
 
     }
-    public MovieOmdbRequest(String imdbId, String title, String year, String type) {
+    public MovieOmdbRequest(String imdbId, String title, String year) {
         this.imdbId = imdbId;
         this.title = title;
         this.year = year;
-        this.type = type;
     }
 
-    public MovieOmdbRequest(String imdbId, String type) {
+    public MovieOmdbRequest(String imdbId) {
         this.imdbId = imdbId;
-        this.type = type;
     }
 
-    public MovieOmdbRequest(String title, String year, String type) {
+    public MovieOmdbRequest(String title, String year) {
         this.title = title;
         this.year = year;
-        this.type = type;
     }
 
     public String getImdbId() {
@@ -51,11 +47,4 @@ public class MovieOmdbRequest {
         this.year = year;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 }

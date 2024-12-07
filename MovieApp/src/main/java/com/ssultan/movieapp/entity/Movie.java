@@ -26,15 +26,19 @@ public class Movie {
     @Column(name = "movie_poster")
     private String poster;
 
+    @Column(name = "movie_actors")
+    private String actors;
+
     public Movie() {}
 
-    public Movie(Long id, String title, String type, String imdbId, String year, String poster) {
+    public Movie(Long id, String title, String type, String imdbId, String year, String poster, String actors) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.imdbId = imdbId;
         this.year = year;
         this.poster = poster;
+        this.actors = actors;
     }
 
     public Long getId() {
@@ -85,6 +89,14 @@ public class Movie {
         this.poster = poster;
     }
 
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -94,6 +106,7 @@ public class Movie {
                 ", imdbId='" + imdbId + '\'' +
                 ", year='" + year + '\'' +
                 ", poster='" + poster + '\'' +
+                ", actors='" + actors + '\'' +
                 '}';
     }
 }
