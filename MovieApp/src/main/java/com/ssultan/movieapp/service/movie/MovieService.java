@@ -13,6 +13,10 @@ public interface MovieService {
     //For Admin
     MovieDto saveMovieByImdbId(MovieOmdbRequest movie);
     MovieDto saveMovieByImdbTitleAndYear(MovieOmdbRequest movie);
+
+    List<MovieDto> saveBatchMoviesByImdbId(List<MovieOmdbRequest> movies);
+    List<MovieDto> saveBatchMovieByImdbTitleAndYear(List<MovieOmdbRequest> movies);
+
     void deleteMovie(Long movieId);
 
     //For User

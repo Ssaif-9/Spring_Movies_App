@@ -55,6 +55,36 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public List<MovieDto> saveBatchMoviesByImdbId(List<MovieOmdbRequest> movies) {
+        List<MovieDto> movieDtoList = new ArrayList<>();
+        for(MovieOmdbRequest movie : movies){
+            if (movieRepo.existsByImdbId(movie.getImdbId())) {
+               continue;
+            }
+            MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
+            Movie Localmovie = modelMapper.map(movieFullInfo, Movie.class);
+            movieRepo.save(Localmovie);
+            movieDtoList.add(modelMapper.map(movieFullInfo, MovieDto.class));
+        }
+        return movieDtoList;
+    }
+
+    @Override
+    public List<MovieDto> saveBatchMovieByImdbTitleAndYear(List<MovieOmdbRequest> movies) {
+        List<MovieDto> movieDtoList = new ArrayList<>();
+        for(MovieOmdbRequest movie : movies){
+            if (movieRepo.existsByTitle(movie.getTitle())) {
+                continue;
+            }
+            MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByTitleAndYear(movie.getTitle(),movie.getYear());
+            Movie Localmovie = modelMapper.map(movieFullInfo, Movie.class);
+            movieRepo.save(Localmovie);
+            movieDtoList.add(modelMapper.map(movieFullInfo, MovieDto.class));
+        }
+        return movieDtoList;
+    }
+
+    @Override
     public void deleteMovie(Long movieId) {
         if (movieRepo.existsById(movieId)) {
             throw new NotFoundMovieException("NO Movie To Delete");

@@ -8,6 +8,8 @@ import com.ssultan.movieapp.service.movie.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/admin")
 public class AdminController {
@@ -26,6 +28,16 @@ public class AdminController {
     @PostMapping("/addByTitle")
     public MovieDto addMovieByTitle(@RequestBody MovieOmdbRequest movieOmdbRequest) {
         return movieService.saveMovieByImdbTitleAndYear(movieOmdbRequest);
+    }
+
+    @PostMapping("/addBatchById")
+    public List<MovieDto> addBatchMovieById(@RequestBody List<MovieOmdbRequest> movieOmdbRequests) {
+        return movieService.saveBatchMoviesByImdbId(movieOmdbRequests);
+    }
+
+    @PostMapping("/addBatchByTitle")
+    public List<MovieDto> addBatchMovieByTitleAndYear(@RequestBody List<MovieOmdbRequest> movieOmdbRequests) {
+        return movieService.saveBatchMovieByImdbTitleAndYear(movieOmdbRequests);
     }
 
     @DeleteMapping("/{movieId}")
