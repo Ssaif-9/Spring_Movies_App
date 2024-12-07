@@ -40,9 +40,19 @@ public class AdminController {
         return movieService.saveBatchMovieByImdbTitleAndYear(movieOmdbRequests);
     }
 
-    @DeleteMapping("/{movieId}")
+    @DeleteMapping("/deleteById/{movieId}")
     public void deleteMovieById(@PathVariable Long movieId) {
         movieService.deleteMovie(movieId);
+    }
+
+    @DeleteMapping("/deleteByImdbId/{imdbId}")
+    public void deleteMovieById(@PathVariable String imdbId) {
+        movieService.deleteMovieByImdbId(imdbId);
+    }
+
+    @PostMapping("/deleteBatch")
+    public void deleteBatchMovieByImdbId(@RequestBody List<String> movieIds) {
+        movieService.deleteBatchMoviesByImdbId(movieIds);
     }
 
     @ExceptionHandler(value = NotFoundMovieException.class)

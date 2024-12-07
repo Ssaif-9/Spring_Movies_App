@@ -19,6 +19,9 @@ public interface MovieService {
 
     void deleteMovie(Long movieId);
 
+    void deleteMovieByImdbId(String imdbId);
+    void deleteBatchMoviesByImdbId(List<String> imdbIds);
+
     //For User
     List<MovieDto> getAllMovies();
     MovieFullInfo getMovieById(Long movieId);

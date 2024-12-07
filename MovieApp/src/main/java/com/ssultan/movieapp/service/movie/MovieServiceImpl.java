@@ -86,10 +86,28 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void deleteMovie(Long movieId) {
-        if (movieRepo.existsById(movieId)) {
+        if (!movieRepo.existsById(movieId)) {
             throw new NotFoundMovieException("NO Movie To Delete");
         }
         movieRepo.deleteById(movieId);
+    }
+
+    @Override
+    public void deleteMovieByImdbId(String imdbId) {
+
+        if (!movieRepo.existsByImdbId(imdbId)) {
+            throw new NotFoundMovieException("NO Movie To Delete");
+        }
+        Movie movie = movieRepo.findByImdbId(imdbId);
+        movieRepo.deleteById(movie.getId());
+    }
+
+    @Override
+    public void deleteBatchMoviesByImdbId(List<String> imdbIds) {
+        imdbIds.stream()
+                .filter(movieRepo::existsByImdbId)
+                .map(movieRepo::findByImdbId)
+                .forEach((movie-> movieRepo.deleteById(movie.getId())));
     }
 
     @Override
