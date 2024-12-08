@@ -54,6 +54,7 @@ public class UserController {
         return movieService.getMovieByYear(year);
     }
 
+
     @ExceptionHandler(value = NotFoundMovieException.class)
     ErrorException getInvalidAccountDataException(NotFoundMovieException notFoundMovieException) {
         return new ErrorException(notFoundMovieException.getExceptionMessage());

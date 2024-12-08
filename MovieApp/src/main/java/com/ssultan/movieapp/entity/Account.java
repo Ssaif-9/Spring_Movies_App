@@ -1,8 +1,10 @@
 package com.ssultan.movieapp.entity;
 
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "account")
@@ -26,9 +28,9 @@ public class Account {
     private String email;
 
     @NotNull
-    //@Enumerated(EnumType.STRING)
     @Column(name = "account_role")
     private String role;
+
 
     public Account() {
 
@@ -81,4 +83,6 @@ public class Account {
     public void setRole(@NotNull String role) {
         this.role = role;
     }
+
+
 }

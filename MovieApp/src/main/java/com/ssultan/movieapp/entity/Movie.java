@@ -29,6 +29,9 @@ public class Movie {
     @Column(name = "movie_actors")
     private String actors;
 
+
+
+
     public Movie() {}
 
     public Movie(Long id, String title, String type, String imdbId, String year, String poster, String actors) {
@@ -96,6 +99,7 @@ public class Movie {
     public void setActors(String actors) {
         this.actors = actors;
     }
+
 
     @Override
     public String toString() {
