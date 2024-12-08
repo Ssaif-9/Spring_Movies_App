@@ -7,6 +7,7 @@ import com.ssultan.movieapp.reposatiry.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,15 +16,18 @@ import java.util.Optional;
 public class AccountServiceImp implements AccountService  {
 
     private final AccountRepo accountRepo;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder(12);
 
     @Autowired
     public AccountServiceImp(AccountRepo accountRepo) {
         this.accountRepo = accountRepo;
+
     }
 
 
     @Override
     public void addAccount(Account account) {
+        account.setPassword(bCryptPasswordEncoder.encode(account.getPassword()));
         accountRepo.save(account);
     }
 
