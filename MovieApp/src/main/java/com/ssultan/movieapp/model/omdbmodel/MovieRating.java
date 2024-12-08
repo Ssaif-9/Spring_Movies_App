@@ -1,4 +1,4 @@
-package com.ssultan.movieapp.model;
+package com.ssultan.movieapp.model.omdbmodel;
 
 import com.google.gson.annotations.SerializedName;
 

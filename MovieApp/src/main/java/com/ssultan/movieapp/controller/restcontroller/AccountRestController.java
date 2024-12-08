@@ -1,4 +1,4 @@
-package com.ssultan.movieapp.controller;
+package com.ssultan.movieapp.controller.restcontroller;
 
 import com.ssultan.movieapp.entity.Account;
 import com.ssultan.movieapp.exception.ErrorException;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/login")
-public class AccountController {
+public class AccountRestController {
 
     private final AccountService accountService;
 
     @Autowired
-    public AccountController(AccountService accountService) {
+    public AccountRestController(AccountService accountService) {
         this.accountService = accountService;
     }
 

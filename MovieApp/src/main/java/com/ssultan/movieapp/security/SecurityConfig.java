@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -25,23 +24,18 @@ public class SecurityConfig {
         this.accountService = accountService;
     }
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception {
        return http    .csrf(Customizer->Customizer.disable())
-                .authorizeHttpRequests(configurer -> configurer
-                        .requestMatchers("api/v1/login/**").permitAll()
-                        .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
-                        .requestMatchers("api/v1/user/**").hasRole("USER")
-                        .anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults())
-                .sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-               .build();
-
-
+                      .authorizeHttpRequests(configurer -> configurer
+                              .requestMatchers("api/v1/login/**").permitAll()
+                              .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
+                              .requestMatchers("api/v1/user/**").hasRole("USER")
+                              .anyRequest().authenticated())
+                      .httpBasic(Customizer.withDefaults())
+                      .sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                      .build();
        // http.formLogin(Customizer.withDefaults());
-
-
     }
     @Bean
     public AuthenticationProvider authenticationProvider() {

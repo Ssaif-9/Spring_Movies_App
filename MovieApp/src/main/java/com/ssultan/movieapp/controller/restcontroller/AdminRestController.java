@@ -1,4 +1,4 @@
-package com.ssultan.movieapp.controller;
+package com.ssultan.movieapp.controller.restcontroller;
 
 import com.ssultan.movieapp.exception.ErrorException;
 import com.ssultan.movieapp.exception.NotFoundMovieException;
@@ -12,11 +12,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin")
-public class AdminController {
+public class AdminRestController {
 
     private MovieService movieService;
     @Autowired
-    public AdminController(MovieService movieService) {
+    public AdminRestController(MovieService movieService) {
         this.movieService = movieService;
     }
 

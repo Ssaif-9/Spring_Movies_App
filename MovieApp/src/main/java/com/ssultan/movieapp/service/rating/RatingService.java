@@ -1,7 +1,5 @@
 package com.ssultan.movieapp.service.rating;
 
-import com.ssultan.movieapp.entity.Movie;
-import com.ssultan.movieapp.entity.Rating;
 import org.springframework.stereotype.Service;
 
 @Service

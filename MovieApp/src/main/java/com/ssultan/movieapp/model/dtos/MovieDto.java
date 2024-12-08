@@ -1,7 +1,5 @@
 package com.ssultan.movieapp.model.dtos;
 
-import jakarta.persistence.Column;
-
 public class MovieDto {
     private String title;
     private String type;

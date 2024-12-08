@@ -3,7 +3,7 @@ package com.ssultan.movieapp.service.movie;
 import com.ssultan.movieapp.entity.Movie;
 import com.ssultan.movieapp.exception.AlreadyExistMovieException;
 import com.ssultan.movieapp.exception.NotFoundMovieException;
-import com.ssultan.movieapp.model.MovieFullInfo;
+import com.ssultan.movieapp.model.omdbmodel.MovieFullInfo;
 import com.ssultan.movieapp.model.dtos.MovieDto;
 import com.ssultan.movieapp.model.requests.MovieOmdbRequest;
 import com.ssultan.movieapp.reposatiry.MovieRepo;
@@ -174,8 +174,7 @@ public class MovieServiceImpl implements MovieService {
 
             return moviePage;
         } else {
-            throw new NotFoundMovieException("There's no movie in database or " +
-                    "Invalid paging or sorting params or content does not exist");
+            throw new NotFoundMovieException("There's no movie in database or Invalid paging" );
         }
     }
 

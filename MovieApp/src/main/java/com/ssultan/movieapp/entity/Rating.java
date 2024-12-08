@@ -1,6 +1,5 @@
 package com.ssultan.movieapp.entity;
 
-import com.ssultan.movieapp.reposatiry.AccountRepo;
 import jakarta.persistence.*;
 
 @Entity

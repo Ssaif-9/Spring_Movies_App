@@ -1,11 +1,10 @@
-package com.ssultan.movieapp.controller;
+package com.ssultan.movieapp.controller.restcontroller;
 
 import com.ssultan.movieapp.entity.Movie;
-import com.ssultan.movieapp.entity.Rating;
 import com.ssultan.movieapp.exception.AlreadyExistMovieException;
 import com.ssultan.movieapp.exception.ErrorException;
 import com.ssultan.movieapp.exception.NotFoundMovieException;
-import com.ssultan.movieapp.model.MovieFullInfo;
+import com.ssultan.movieapp.model.omdbmodel.MovieFullInfo;
 import com.ssultan.movieapp.model.dtos.MovieDto;
 import com.ssultan.movieapp.service.movie.MovieService;
 import com.ssultan.movieapp.model.PageResponse;
@@ -17,14 +16,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/user")
-public class UserController {
+public class UserRestController {
 
     private final MovieService movieService;
 
     private final RatingService ratingService;
 
     @Autowired
-    public UserController(MovieService movieService, RatingService ratingService) {
+    public UserRestController(MovieService movieService, RatingService ratingService) {
         this.movieService = movieService;
         this.ratingService = ratingService;
     }
