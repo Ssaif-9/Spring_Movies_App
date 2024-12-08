@@ -9,6 +9,6 @@ public interface AccountService extends UserDetailsService {
 
     void addAccount(Account account);
     Account getAccountById(Long accountId);
-    Account getAccountByEmail(String accountEmail);
-    Account getAccountByUsername(String accountUsername);
+
+
 }

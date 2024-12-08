@@ -2,7 +2,7 @@ package com.ssultan.movieapp.service.account;
 
 import com.ssultan.movieapp.entity.Account;
 import com.ssultan.movieapp.exception.InvalidAccountDataException;
-import com.ssultan.movieapp.model.UserPrincipal;
+import com.ssultan.movieapp.security.UserPrincipal;
 import com.ssultan.movieapp.reposatiry.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,15 +41,6 @@ public class AccountServiceImp implements AccountService  {
         return accountRepo.findById(accountId).get();
     }
 
-    @Override
-    public Account getAccountByEmail(String accountEmail) {
-        return accountRepo.findByEmail(accountEmail);
-    }
-
-    @Override
-    public Account getAccountByUsername(String accountUsername) {
-        return accountRepo.findByUsername(accountUsername);
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

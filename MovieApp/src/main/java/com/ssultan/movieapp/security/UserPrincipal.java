@@ -1,4 +1,4 @@
-package com.ssultan.movieapp.model;
+package com.ssultan.movieapp.security;
 
 import com.ssultan.movieapp.entity.Account;
 import org.springframework.security.core.GrantedAuthority;
