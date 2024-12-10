@@ -2,21 +2,20 @@ package com.ssultan.movieapp.service.account;
 
 import com.ssultan.movieapp.entity.Account;
 import com.ssultan.movieapp.exception.InvalidAccountDataException;
-import com.ssultan.movieapp.security.UserPrincipal;
+import com.ssultan.movieapp.model.requests.LoginRequest;
+import com.ssultan.movieapp.model.response.LoginResponse;
 import com.ssultan.movieapp.reposatiry.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class AccountServiceImp implements AccountService  {
 
     private final AccountRepo accountRepo;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder(12);
 
     @Autowired
     public AccountServiceImp(AccountRepo accountRepo) {
@@ -24,10 +23,8 @@ public class AccountServiceImp implements AccountService  {
 
     }
 
-
     @Override
     public void addAccount(Account account) {
-        account.setPassword(bCryptPasswordEncoder.encode(account.getPassword()));
         accountRepo.save(account);
     }
 
@@ -42,14 +39,20 @@ public class AccountServiceImp implements AccountService  {
     }
 
 
+    //Direct Use in Controller
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountRepo.findByUsername(username);
+    public  Map<String, String> login(LoginRequest loginRequest) {
+        Account account =accountRepo.findByUsernameAndPassword(loginRequest.getUsername(),loginRequest.getPassword());
+        System.out.println(account.toString());
         if (account == null) {
-            System.out.println("Invalid username or password.");
-            throw new UsernameNotFoundException("Invalid username or password.");
+            throw new InvalidAccountDataException("Not Fount Account With id :"+loginRequest.getUsername(),"404");
+        }else{
+            Map<String, String> response = new HashMap<>();
+            response.put("username", account.getUsername());
+            response.put("role", account.getRole());
+            return  response;
         }
-        return new UserPrincipal(account);
     }
+
 
 }
