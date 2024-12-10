@@ -1,0 +1,43 @@
+<section class="vh-100">
+    <div class="p-5 bg-image"
+        style="background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg'); height: 300px;"></div>
+    <div class="card mx-4 mx-md-5 shadow-5-strong bg-body-tertiary"
+        style="margin-top: -100px; backdrop-filter: blur(30px);">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <h3 class="mb-5">Movie App</h3>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="username">User Name</label>
+                                
+                                <input  type="text" id="username" class="form-control form-control-lg"
+                                    placeholder="Enter user name" [value]=login.username  #inputUserName (keyup)="changeUserName(inputUserName.value)">
+                                <br />
+                            </div>
+
+
+                            <div data-mdb-input-init class="form-outline mb-3">
+                                <label class="form-label" for="password">Password</label>
+                            <input   type="password" id="password" class="form-control form-control-lg" 
+                                    placeholder="Enter password" [value]=login.password  #inputPassword (keyup)="changePassword(inputPassword.value)">
+                            <br />
+                            </div>
+
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <button type="button" class="btn btn-primary btn-lg"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="onLogin()">
+                                    Login
+                                </button>
+                               
+                            </div>
+                            <hr class="my-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
