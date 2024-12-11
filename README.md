@@ -11,3 +11,12 @@ This project is a fully-functional movie application developed using Spring Boot
 - **Pagination for the movies List**: Regular user can show movie cards in pages with ablity to show full information for each movie.
 - **Search bar**: Regular user can search for movie by Imdb Id , Title or Year.
 - **Rating Button**: Regular user can rate each movie.
+
+
+## Design
+
+### Database Design
+
+The following diagram represents the Entity-Relationship Diagram (ERD) for the application's database.
+![Entity-Relationship Diagram](https://github.com/Ssaif-9/Spring_Movies_App/Attachment/ERD.png)
+
