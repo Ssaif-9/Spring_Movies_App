@@ -35,3 +35,83 @@ The project follows a well-structured architecture pattern:
 
 - **REST API**: The application exposes RESTful endpoints to facilitate communication between the client and server. These endpoints follow standard HTTP methods (GET, POST, PUT, DELETE) for CRUD operations.
 
+## Technologies Used
+
+- **Backend**: Spring Boot, Hibernate, JPA, MySQL, RESTful APIs
+- **Frontend**: Angular, HTML, CSS, TypeScript, Bootstrap
+- **Database**: MySQL
+- **movie API**: [OMDB API](https://www.omdbapi.com/)
+
+- **Tools & Libraries**:
+   - Spring Data JPA for database interactions
+   - ModelMapper for entity-DTO mapping
+   - Bootstrap for responsive design
+
+
+   
+## Setup and Installation
+
+### Prerequisites
+
+- Java 17+
+- Maven 3.6+
+- MySQL 8.x+
+- Angular 16+
+- OMDB API credentials (apikey)
+- IDE: IntelliJ IDEA / VSCode/ MySQL Workbench  
+
+
+### Steps
+#### for Spring (Backend)
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/Ssaif-9/Spring_Movies_App.git
+    cd Spring_Movies_App
+    ```
+
+2. Configure the MySQL database:
+
+   Create a database in MySQL:
+
+    ```sql
+    CREATE DATABASE account_db;
+    ```
+
+   Update the `application.properties` file with your MySQL credentials:
+
+    ```properties
+    spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce_db
+    spring.datasource.username=your_username
+    spring.datasource.password=your_password
+    spring.jpa.hibernate.ddl-auto=update    //can use create-drop to automatic first create tables and relations
+    ```
+
+4. Install dependencies:
+
+    ```bash
+    mvn clean install
+    ```
+
+5. Run the application:
+
+    ```bash
+    mvn spring-boot:run
+    ```
+
+   Access the application:
+   Navigate to `http://localhost:8080` to use the application.
+
+#### for Angular (Frontend)
+1. Install and Start:
+
+    ```bash
+    cd movie-frontend
+    npm install
+    ng serve --open 
+    ```
+
+    Access the application:
+   Navigate to `http://localhost:4200` to use the application.
+
+   
