@@ -15,7 +15,7 @@ public interface MovieService {
     MovieDto saveMovieByImdbId(String movieImdbId);
     MovieDto saveMovieByImdbTitleAndYear(MovieOmdbRequest movie);
 
-    List<MovieDto> saveBatchMoviesByImdbId(List<MovieOmdbRequest> movies);
+    List<MovieDto> saveBatchMoviesByImdbId(List<String> movies);
     List<MovieDto> saveBatchMovieByImdbTitleAndYear(List<MovieOmdbRequest> movies);
 
     void deleteMovie(Long movieId);
@@ -27,13 +27,14 @@ public interface MovieService {
     List<MovieDto> getAllMovies();
     MovieFullInfo getMovieById(Long movieId);
 
-    MovieFullInfo getMovieByTitle(String movieTitle);
-    MovieFullInfo getMovieByImdbId(String movieImdbId);
+    List<MovieDto> getMovieByTitle(String movieTitle);
+    List<MovieDto> getMovieByImdbId(String movieImdbId);
     List<MovieDto> getMovieByYear(String movieYear);
 
-    PageResponse<Movie> getAllMovies(Integer pageNumber, Integer pageSize) ;
+    PageResponse<MovieDto> pageAllMovies(Integer pageNumber, Integer pageSize) ;
 
 
+    MovieFullInfo getMovieFullInfo(String imdbId);
 }
 
 

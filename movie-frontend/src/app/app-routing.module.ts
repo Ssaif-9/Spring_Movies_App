@@ -5,14 +5,24 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { HomeComponent } from './component/home/home.component';
 import { MovieComponent } from './component/movie/movie.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
-import { MovieOperationComponent } from './component/movie-operation/movie-operation.component';
+import { SearchComponent } from './component/search/search.component';
+import { OperationDeleteByImdbidComponent } from './component/operation-delete-by-imdbid/operation-delete-by-imdbid.component';
+import { OperationAddByImdbidComponent } from './component/operation-add-by-imdbid/operation-add-by-imdbid.component';
+import { OperationAddByTitleComponent } from './component/operation-add-by-title/operation-add-by-title.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'operation', component: MovieOperationComponent },
-  { path: 'home' , component : HomeComponent },
+  { path: 'addByImdbid', component: OperationAddByImdbidComponent },
+  { path: 'addBytitle', component: OperationAddByTitleComponent },
+  { path: 'daleteImdbId', component: OperationDeleteByImdbidComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'movie', component: MovieComponent },
+  { path: 'search/imdbId/:imbdId', component: SearchComponent },
+  { path: 'search/title/:title', component: SearchComponent },
+  { path: 'search/year/:year', component: SearchComponent },
+
+  { path: 'movie/:imdbId', component: MovieComponent },
   { path: '', component: LoginComponent },
   { path: '**' , component : PageNotFoundComponent },
 ];

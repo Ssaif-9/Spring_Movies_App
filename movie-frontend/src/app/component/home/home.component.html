@@ -1,13 +1,45 @@
-<a class="link" href="https://codepen.io/simoberny/pen/qxxOqj" target="_blank">Dark Version</a>
-<div class="input-group">
-    <div class="form-outline" data-mdb-input-init>
-        <input type="text" id="tacktitle" class="form-control" placeholder="Movie Search..." [value]=homeMovie.title
-            #inputTitle (keyup)="changeTitle(inputTitle.value)">
-    </div>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>movieCard</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <button class="btn btn-primary" type="submit" (click)="searchMovieByTitle(inputTitle.value)">Search</button>
+   
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="home">MV APP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="login">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+        <form>
+            <div class="input-group mb-3">
+                <!-- Use (change) to bind select value -->
+                <select class="form-select" style="max-width: 150px;" (change)="onCriteriaChange($event)">
+                    <option selected value="">By</option>
+                    <option value="TITLE">TITLE</option>
+                    <option value="IMDB_ID">IMDB ID</option>
+                    <option value="YEAR">YEAR</option>
+                </select>
+                <!-- Use (input) to bind input value -->
+                <input type="text" class="form-control" placeholder="Search Movie..." (input)="onTextChange($event)">
+                <button class="btn btn-primary" type="button" (click)="onSearch()">Search</button>
+            </div>
+        </form>
+        </div>
+    </div>
 </div>
-<div *ngFor="let movie of homeMovies "  class="movie_card" id="bright">
+
+<div *ngFor="let movie of page.entity "  class="movie_card" id="bright">
     <div class="info_section">
         <div class="movie_header">
             <img class="locandina"
@@ -17,14 +49,23 @@
             <h4> {{ movie.actors}}</h4>
             <p class="type">{{ movie.type }}</p>
         </div>
-        <br/><br />
-        <div class="movie_desc">
-            <p class="text">
-                {{ movie.plot}}
-            </p>
-        </div>
-    
-    </div>
-    <div class="blur_back bright_back"></div>
 
+        <div class="movie_desc">
+            <span><i class="fas fa-star"></i> {{ movie.imdbRating }} / 10</span>
+            <p class="text"> {{ movie.plot}}</p>
+            <a href="movie/{{ movie.imdbId }}" class="btn btn-primary">Details</a>
+        </div>
+        
+    </div>
+    
+    <div class="blur_back bright_back"></div>
 </div>
+
+
+
+
+<div class="pagenumbers" id="pagination">
+    <button *ngFor="let pagee of generatePagesArray(page.totalPages)" [class.active]="current_page === pagee" (click)="onPaginateChange(pagee)">
+        {{ pagee }} </button>
+</div>
+

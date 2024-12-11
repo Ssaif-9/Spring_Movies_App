@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MovieOperation } from './movie-operation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,14 +24,12 @@ export class MovieOperationService {
     return this.http.post(`${this.baseUrl}/delete/imdbId`, imdbId);
   }
   
-
-  
   addMoviesImdbIdList(imdbIdList:String[]): Observable<any> {
-    return this.http.post(`${this.baseUrl}/add/imdbIdList`, imdbIdList);
+    return this.http.post(`${this.baseUrl}/addList/imdbId`, imdbIdList);
   }
 
   deleteMovieByImdbIdList(imdbIdList:String[]): Observable<any> {
-    return this.http.post(`${this.baseUrl}/delete/imdbIdList`, imdbIdList);
+    return this.http.post(`${this.baseUrl}/deleteList/imdbId`,imdbIdList);
   }
 
   
@@ -41,11 +38,11 @@ export class MovieOperationService {
     return this.http.post(`${this.baseUrl}/delete/title`, searchData);
   }
   
-  addMoviesByTitleList(titleList:MovieOperation[]): Observable<any> {
+  addMoviesByTitleList(titleList:[]): Observable<any> {
     return this.http.post(`${this.baseUrl}/add/titleList`, titleList);
   }
 
-  deleteMovieByTitleList(titleList:MovieOperation[]): Observable<any> {
+  deleteMovieByTitleList(titleList:[]): Observable<any> {
     return this.http.post(`${this.baseUrl}/delete/titleList`, titleList);
   }
 }

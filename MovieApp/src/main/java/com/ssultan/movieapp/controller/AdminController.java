@@ -47,6 +47,18 @@ public class AdminController {
         return ResponseEntity.ok(movieDto);
     }
 
+    @PostMapping("/addList/imdbId")
+    public ResponseEntity<?> addMovieByImdbId(@RequestBody List<String> imdbId) {
+        List<MovieDto> movieDto= movieService.saveBatchMoviesByImdbId(imdbId);
+        return ResponseEntity.ok(movieDto);
+    }
+
+    @PostMapping("/deleteList/imdbId")
+    public ResponseEntity<?> deleteMovieByImdbId(@RequestBody List<String> imdbId) {
+        movieService.deleteBatchMoviesByImdbId(imdbId);
+        return ResponseEntity.ok(imdbId);
+    }
+
 
 
 

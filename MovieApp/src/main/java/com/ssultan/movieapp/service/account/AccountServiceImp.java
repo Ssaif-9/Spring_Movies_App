@@ -43,7 +43,6 @@ public class AccountServiceImp implements AccountService  {
     @Override
     public  Map<String, String> login(LoginRequest loginRequest) {
         Account account =accountRepo.findByUsernameAndPassword(loginRequest.getUsername(),loginRequest.getPassword());
-        System.out.println(account.toString());
         if (account == null) {
             throw new InvalidAccountDataException("Not Fount Account With id :"+loginRequest.getUsername(),"404");
         }else{

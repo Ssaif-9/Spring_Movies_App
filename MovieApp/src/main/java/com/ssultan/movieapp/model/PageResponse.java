@@ -38,4 +38,13 @@ public class PageResponse <T>{
     public void setEntity(List<?> entity) {
         this.entity = entity;
     }
+
+    @Override
+    public String toString() {
+        return "PageResponse{" +
+                "totalPages=" + totalPages +
+                ", totalElements=" + totalElements +
+                ", entity=" + entity +
+                '}';
+    }
 }

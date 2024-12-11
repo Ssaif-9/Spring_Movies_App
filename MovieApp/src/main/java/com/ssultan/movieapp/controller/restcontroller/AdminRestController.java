@@ -31,7 +31,7 @@ public class AdminRestController {
     }
 
     @PostMapping("/addBatchById")
-    public List<MovieDto> addBatchMovieById(@RequestBody List<MovieOmdbRequest> movieOmdbRequests) {
+    public List<MovieDto> addBatchMovieById(@RequestBody List<String> movieOmdbRequests) {
         return movieService.saveBatchMoviesByImdbId(movieOmdbRequests);
     }
 

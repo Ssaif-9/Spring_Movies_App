@@ -59,13 +59,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<MovieDto> saveBatchMoviesByImdbId(List<MovieOmdbRequest> movies) {
+    public List<MovieDto> saveBatchMoviesByImdbId(List<String> movies) {
         List<MovieDto> movieDtoList = new ArrayList<>();
-        for(MovieOmdbRequest movie : movies){
-            if (movieRepo.existsByImdbId(movie.getImdbId())) {
+        for(String movie : movies){
+            if (movieRepo.existsByImdbId(movie)) {
                continue;
             }
-            MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
+            MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByImdbId(movie);
             Movie Localmovie = modelMapper.map(movieFullInfo, Movie.class);
             movieRepo.save(Localmovie);
             movieDtoList.add(modelMapper.map(movieFullInfo, MovieDto.class));
@@ -133,21 +133,30 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public MovieFullInfo getMovieByTitle(String movieTitle) {
+    public List<MovieDto> getMovieByTitle(String movieTitle) {
         if (!movieRepo.existsByTitle(movieTitle)) {
             throw new NotFoundMovieException("not found");
         }
         Movie movie = movieRepo.findByTitle(movieTitle);
-        return MovieUtil.getAllMovieDetailsByTitleAndYear(movie.getTitle(),movie.getYear());
+        MovieFullInfo movieFullInfo=MovieUtil.getAllMovieDetailsByTitleAndYear(movie.getTitle(),movie.getYear());
+        MovieDto movieDto=modelMapper.map(movieFullInfo,MovieDto.class);
+        List<MovieDto> movieDtoList=new ArrayList<>();
+        movieDtoList.add(movieDto);
+
+        return movieDtoList ;
     }
 
     @Override
-    public MovieFullInfo getMovieByImdbId(String movieImdbId) {
+    public List<MovieDto> getMovieByImdbId(String movieImdbId) {
         if (!movieRepo.existsByImdbId(movieImdbId)) {
             throw new NotFoundMovieException("not found");
         }
         Movie movie = movieRepo.findByImdbId(movieImdbId);
-        return MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
+        MovieFullInfo movieFullInfo=MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
+        MovieDto movieDto=modelMapper.map(movieFullInfo,MovieDto.class);
+        List<MovieDto> movieDtoList=new ArrayList<>();
+        movieDtoList.add(movieDto);
+        return movieDtoList;
     }
 
     @Override
@@ -159,7 +168,7 @@ public class MovieServiceImpl implements MovieService {
         return movies.stream().map(movie ->modelMapper.map(movie,MovieDto.class)).collect(Collectors.toList());
     }
 
-    public PageResponse<Movie> getAllMovies(Integer pageNumber, Integer pageSize)  {
+    public PageResponse<MovieDto> pageAllMovies(Integer pageNumber, Integer pageSize)  {
 
         Pageable paging;
         paging = PageRequest.of(pageNumber, pageSize);
@@ -168,7 +177,7 @@ public class MovieServiceImpl implements MovieService {
                 .map(movie -> modelMapper.map(movie,MovieDto.class));
 
         if (pagedResult.hasContent()) {
-            PageResponse<Movie> moviePage = new PageResponse<>();
+            PageResponse<MovieDto> moviePage = new PageResponse<>();
             moviePage.setTotalPages(pagedResult.getTotalPages());
             moviePage.setTotalElements(pagedResult.getTotalElements());
             moviePage.setEntity(pagedResult.getContent());
@@ -177,6 +186,16 @@ public class MovieServiceImpl implements MovieService {
         } else {
             throw new NotFoundMovieException("There's no movie in database or Invalid paging" );
         }
+    }
+
+    @Override
+    public MovieFullInfo getMovieFullInfo(String imdbId) {
+        if(!movieRepo.existsByImdbId(imdbId)){
+            throw new NotFoundMovieException("not found");
+        }
+        Movie movie = movieRepo.findByImdbId(imdbId);
+        return MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
+
     }
 
 }

@@ -11,25 +11,38 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MovieOperationComponent } from './component/movie-operation/movie-operation.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { SearchComponent } from './component/search/search.component';
+import { OperationAddByImdbidComponent } from './component/operation-add-by-imdbid/operation-add-by-imdbid.component';
+import { OperationAddByTitleComponent } from './component/operation-add-by-title/operation-add-by-title.component';
+import { OperationDeleteByImdbidComponent } from './component/operation-delete-by-imdbid/operation-delete-by-imdbid.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieComponent,
     PageNotFoundComponent,
+  
   ],
   imports: [
+    MovieComponent,
     BrowserModule,
     LoginComponent,
     DashboardComponent,
-    MovieOperationComponent,
+    
     HomeComponent,
     AppRoutingModule,
     HttpClientModule,
+    SearchComponent,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    PaginationModule,
+    PaginationModule.forRoot(),
+    CommonModule,
+    OperationAddByImdbidComponent,
+    OperationAddByTitleComponent,
+    OperationDeleteByImdbidComponent,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

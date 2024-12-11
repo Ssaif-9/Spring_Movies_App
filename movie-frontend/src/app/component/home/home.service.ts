@@ -15,16 +15,19 @@ export class HomeService {
   getHomeMovies(): Observable<any> {
     return this.http.get(`${this.baseUrl}/all`);
   }
-
-  searchMovieByTitle(title: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${title}`);
+  getPagesHomeMovies(page:number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/page/${page}`);
   }
 
-  searchMovieByimdbId(imdbId: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${imdbId}`);
+  searchMovieByTitle(title: String): Observable<any> {
+    return this.http.get(`${this.baseUrl}/search/byTitle/${title}`);
   }
 
-  searchMovieByYear(year: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${year}`);
+  searchMovieByimdbId(imdbId: String): Observable<any> {
+    return this.http.get(`${this.baseUrl}/search/byImdbId/${imdbId}`);
+  }
+
+  searchMovieByYear(year: String): Observable<any> {
+    return this.http.get(`${this.baseUrl}/search/byYear/${year}`);
   }
 } 

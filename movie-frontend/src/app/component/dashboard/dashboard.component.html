@@ -41,9 +41,25 @@
 </head>
 
 <body>
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="dashboard">MV APP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="addByImdbid">Add By IMDB ID</a>
+                <a class="nav-item nav-link" href="addBytitle">Add TITLE</a>
+                <a class="nav-item nav-link" href="daleteImdbId">Delete By IMDB ID</a>
+                <a class="nav-item nav-link" href="login">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="custom-container">
+        
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
@@ -51,59 +67,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="btn btn-success" href="operation" >
-                                <i class="material-icons">&#xE147;</i> <span>Add New Movie</span>
-                            </a>
-                        </li>
-                        <br />
-                        <!--
-                        <li class="nav-item">
-                            <a class="btn btn-danger" routerLink="/operation" routerLinkActive="active">
-                                <i class="material-icons">&#xE15C;</i> <span>Delete</span>
-                            </a>
-                        </li>
-                        -->
-                        
-                    </ul>
-                </div>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                           
-                           
-                            <th>id</th>
-                            <th>TITLE</th>
-                            <th>IMDB ID</th>
-                            <th>YEAR</th>
-                            <th>FULL INFO</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-
-                        
-                            <tr *ngFor="let movie of moviesDto ; let i=index">
-                            
-                                <td> {{ i + 1 }}</td>
-                                <td> {{ movie.title }}</td>
-                                <td> {{ movie.imdbId }}</td>
-                                <td> {{ movie.year }}</td>
-                                <td> {{ movie.fullinfo }}</td>
-                                <td>
-                                    <button  class="delete" data-toggle="modal" (click)="deleteMovie(movie.imdbId)"><i class="material-icons" data-toggle="tooltip"
-                                            title="Delete">&#xE872;</i></button>
-                                </td>
-                            </tr>
-                           
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
+               
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>TITLE</th>
+                    <th>IMDB ID</th>
+                    <th>YEAR</th>
+                    <th>FULL INFO</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let movie of moviesDto ; let i=index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ movie.title }}</td>
+                    <td>{{ movie.imdbId }}</td>
+                    <td>{{ movie.year }}</td>
+                    <td>
+                        <button class="btn btn-info" data-toggle="modal" (click)="showInfo(movie.imdbId)">
+                            <i class="material-icons" data-toggle="tooltip" title="Show Info">info</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="delete" data-toggle="modal" (click)="deleteMovie(movie.imdbId)">
+                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     
 </body>

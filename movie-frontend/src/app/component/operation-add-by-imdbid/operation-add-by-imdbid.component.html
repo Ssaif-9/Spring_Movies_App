@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="dashboard">MV APP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="addBytitle">Add TITLE</a>
+            <a class="nav-item nav-link" href="daleteImdbId">Delete By IMDB ID</a>
+            <a class="nav-item nav-link" href="login">Logout</a>
+        </div>
+    </div>
+</nav><div id="addById" class="mt-4">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Movie By IMDb ID</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>IMDb ID</label>
+                        <input type="text" id="imdbid" class="form-control" placeholder="Enter IMDB ID " #inputImdbId2 >
+                        <button type="button" class="btn btn-success" (click)="setImdbIdList(inputImdbId2.value)">+</button>
+                    </div>
+                 <br />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success"   (click)="addBatchMovieByImdbId()">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+      
+
+<div *ngIf="imdbIdList.length > 0">
+    <h5>IMDB ID List:</h5>
+    <ul>
+        <li *ngFor="let imdbId of imdbIdList">{{ imdbId }}</li>
+    </ul>
+</div>

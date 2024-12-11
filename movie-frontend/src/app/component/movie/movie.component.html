@@ -1,1 +1,71 @@
-<p>movie works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="prew">MV APP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="login">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="row g-0">
+                <!-- Movie Poster -->
+                <div class="col-md-4">
+                    <img src="{{ movie.poster }}" class="img-fluid rounded-start" alt="{{ movie.title }} Poster">
+                </div>
+                <!-- Movie Details -->
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie.title }}</h5>
+                        <p class="card-text">
+                            <strong>Year:</strong> {{ movie.year }}<br>
+                            <strong>Rated:</strong> {{ movie.rated }}<br>
+                            <strong>Released:</strong> {{ movie.released }}<br>
+                            <strong>Runtime:</strong> {{ movie.runtime }}<br>
+                            <strong>Genre:</strong> {{ movie.genre }}<br>
+                            <strong>Director:</strong> {{ movie.director }}<br>
+                            <strong>Writer:</strong> {{ movie.writer }}<br>
+                            <strong>Country:</strong> {{ movie.country }}<br>
+                            <strong>Language:</strong> {{ movie.language }}<br>
+                            <strong>Plot:</strong> {{ movie.plot }}<br>
+                            <strong>Actors:</strong> {{ movie.actors }}<br>
+                            <strong>Production:</strong> {{ movie.production }}<br>
+                            <strong>Box Office:</strong> {{ movie.boxoffice }}<br>
+                            <strong>Awards:</strong> {{ movie.awards }}<br>
+                            <strong>Website:</strong> <a href="{{ movie.website }}" target="_blank">{{ movie.website }}</a><br>
+                        </p>
+                        <p class="card-text">
+                            <strong>IMDb Rating:</strong> {{ movie.imdbrating }} ({{ movie.imdbvotes }} votes)<br>
+                            <strong>Metascore:</strong> {{ movie.metascore }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Ratings Section -->
+            <div class="card-footer bg-light">
+                <h6>Ratings</h6>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let rating of movie.ratings">
+                        <strong>{{ rating.source }}:</strong> {{ rating.value }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

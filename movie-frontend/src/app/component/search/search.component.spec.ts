@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovieOperationComponent } from './movie-operation.component';
+import { SearchComponent } from './search.component';
 
-describe('MovieOperationComponent', () => {
-  let component: MovieOperationComponent;
-  let fixture: ComponentFixture<MovieOperationComponent>;
+describe('SearchComponent', () => {
+  let component: SearchComponent;
+  let fixture: ComponentFixture<SearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MovieOperationComponent]
+      declarations: [SearchComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MovieOperationComponent);
+    fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

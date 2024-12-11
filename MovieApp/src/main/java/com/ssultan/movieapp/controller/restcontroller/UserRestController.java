@@ -34,8 +34,8 @@ public class UserRestController {
     }
 
     @GetMapping("/page/{pageNo}")
-    public PageResponse<Movie> getAllMovies(@PathVariable Integer pageNo) {
-            return movieService.getAllMovies(pageNo - 1, 5);
+    public PageResponse<MovieDto> getAllMovies(@PathVariable Integer pageNo) {
+            return movieService.pageAllMovies(pageNo - 1, 5);
     }
 
     @GetMapping("/{movieId}")
@@ -43,15 +43,15 @@ public class UserRestController {
         return movieService.getMovieById(movieId);
     }
 
-    @GetMapping("/search/imdbId/{imdbId}")
-    public MovieFullInfo getMovieByImdbId(@PathVariable String imdbId){
-        return movieService.getMovieByImdbId(imdbId);
-    }
-
-    @GetMapping("search/title/{title}")
-    public MovieFullInfo getMovieByTitle(@PathVariable String title){
-        return movieService.getMovieByTitle(title);
-    }
+//    @GetMapping("/search/imdbId/{imdbId}")
+//    public MovieFullInfo getMovieByImdbId(@PathVariable String imdbId){
+//        return movieService.getMovieByImdbId(imdbId);
+//    }
+//
+//    @GetMapping("search/title/{title}")
+//    public MovieFullInfo getMovieByTitle(@PathVariable String title){
+//        return movieService.getMovieByTitle(title);
+//    }
 
     @GetMapping("search/year/{year}")
     public List<MovieDto> getMovieByYear(@PathVariable String year){

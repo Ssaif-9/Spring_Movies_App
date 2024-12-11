@@ -4,6 +4,8 @@ import { AuthService } from '../login/login.service';
 import { Router } from '@angular/router';
 import { DachboardService } from './dachboard.service';
 import { NgFor, NgIf } from '@angular/common';
+import { MovieService } from '../movie/movie.service';
+import { MovieFullInfo } from '../movie/movie.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,8 +19,9 @@ import { NgFor, NgIf } from '@angular/common';
 export class DashboardComponent {
   movieDto: MovieDto = new MovieDto();
   moviesDto: MovieDto[] = new Array<MovieDto>();
+  fullMovie:MovieFullInfo= new MovieFullInfo();
   
-  constructor(private DachboardService: DachboardService, private router: Router) { }
+  constructor(private movieService:MovieService,private dachboardService: DachboardService, private router: Router) { }
   
    changeImdbId(newImdbId:string): void {
         this.movieDto.imdbId = newImdbId;
@@ -31,19 +34,22 @@ export class DashboardComponent {
   }
 
   ngOnInit() {
-    this.DachboardService.getMoviesList().subscribe(data => {
+    this.dachboardService.getMoviesList().subscribe(data => {
       this.moviesDto = data;
     });
   }
 
   deleteMovie(imdbId: string) {
-    this.DachboardService.deleteMovieByImdbId(imdbId).subscribe(data => {
+    this.dachboardService.deleteMovieByImdbId(imdbId).subscribe(data => {
       this.moviesDto = data;
     });
     window.location.reload();
   }
 
-
-
-
+  showInfo(imdbId: String) {
+    this.movieService.getFullInfo(imdbId).subscribe(data => {
+      this.fullMovie = data;
+    });
+    this.router.navigate(['/movie', imdbId]);
+  }
 }
