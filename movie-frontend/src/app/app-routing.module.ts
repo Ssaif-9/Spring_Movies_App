@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'addBytitle', component: OperationAddByTitleComponent },
   { path: 'daleteImdbId', component: OperationDeleteByImdbidComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'preview', component: HomeComponent },
   { path: 'movie', component: MovieComponent },
   { path: 'search/imdbId/:imbdId', component: SearchComponent },
   { path: 'search/title/:title', component: SearchComponent },
