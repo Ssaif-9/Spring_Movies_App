@@ -18,5 +18,5 @@ This project is a fully-functional movie application developed using Spring Boot
 ### Database Design
 
 The following diagram represents the Entity-Relationship Diagram (ERD) for the application's database.
-![Entity-Relationship Diagram](https://github.com/Ssaif-9/Spring_Movies_App/Attachment/ERD.png)
+![Entity-Relationship Diagram](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/ERD.png)
 
