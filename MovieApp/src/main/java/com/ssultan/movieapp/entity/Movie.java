@@ -29,12 +29,18 @@ public class Movie {
     @Column(name = "movie_actors")
     private String actors;
 
+    @Column(name = "movie_plot")
+    private String plot;
+
+    @Column(name="movie_imdb_rating")
+    private String imdbRating;
+
 
 
 
     public Movie() {}
 
-    public Movie(Long id, String title, String type, String imdbId, String year, String poster, String actors) {
+    public Movie(Long id, String title, String type, String imdbId, String year, String poster, String actors, String plot, String imdbRating) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -42,6 +48,8 @@ public class Movie {
         this.year = year;
         this.poster = poster;
         this.actors = actors;
+        this.plot = plot;
+        this.imdbRating = imdbRating;
     }
 
     public Long getId() {
@@ -99,6 +107,19 @@ public class Movie {
     public void setActors(String actors) {
         this.actors = actors;
     }
+    public String getPlot() {
+        return plot;
+    }
+    public void setPlot(String plot) {
+        this.plot = plot;
+    }
+    public String getImdbRating() {
+        return imdbRating;
+    }
+    public void setImdbRating(String imdbRating) {
+        this.imdbRating = imdbRating;
+    }
+
 
 
     @Override
@@ -111,6 +132,8 @@ public class Movie {
                 ", year='" + year + '\'' +
                 ", poster='" + poster + '\'' +
                 ", actors='" + actors + '\'' +
+                ", plot='" + plot + '\'' +
+                ", imdbRating='" + imdbRating + '\'' +
                 '}';
     }
 }

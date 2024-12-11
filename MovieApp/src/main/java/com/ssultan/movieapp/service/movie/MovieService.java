@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public interface MovieService {
     //For Admin
-    MovieDto saveMovieByImdbId(MovieOmdbRequest movie);
+    MovieDto saveMovieByImdbId(String movieImdbId);
     MovieDto saveMovieByImdbTitleAndYear(MovieOmdbRequest movie);
 
     List<MovieDto> saveBatchMoviesByImdbId(List<MovieOmdbRequest> movies);
@@ -20,7 +20,7 @@ public interface MovieService {
 
     void deleteMovie(Long movieId);
 
-    void deleteMovieByImdbId(String imdbId);
+    MovieDto deleteMovieByImdbId(String imdbId);
     void deleteBatchMoviesByImdbId(List<String> imdbIds);
 
     //For User

@@ -1,1 +1,111 @@
-<p>dashboard works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            // Activate tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Select/Deselect checkboxes
+            var checkbox = $('table tbody input[type="checkbox"]');
+            $("#selectAll").click(function () {
+                if (this.checked) {
+                    checkbox.each(function () {
+                        this.checked = true;
+                    });
+                } else {
+                    checkbox.each(function () {
+                        this.checked = false;
+                    });
+                }
+            });
+            checkbox.click(function () {
+                if (!this.checked) {
+                    $("#selectAll").prop("checked", false);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Manage <b>Movie</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="btn btn-success" href="operation" >
+                                <i class="material-icons">&#xE147;</i> <span>Add New Movie</span>
+                            </a>
+                        </li>
+                        <br />
+                        <!--
+                        <li class="nav-item">
+                            <a class="btn btn-danger" routerLink="/operation" routerLinkActive="active">
+                                <i class="material-icons">&#xE15C;</i> <span>Delete</span>
+                            </a>
+                        </li>
+                        -->
+                        
+                    </ul>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                           
+                           
+                            <th>id</th>
+                            <th>TITLE</th>
+                            <th>IMDB ID</th>
+                            <th>YEAR</th>
+                            <th>FULL INFO</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+
+                        
+                            <tr *ngFor="let movie of moviesDto ; let i=index">
+                            
+                                <td> {{ i + 1 }}</td>
+                                <td> {{ movie.title }}</td>
+                                <td> {{ movie.imdbId }}</td>
+                                <td> {{ movie.year }}</td>
+                                <td> {{ movie.fullinfo }}</td>
+                                <td>
+                                    <button  class="delete" data-toggle="modal" (click)="deleteMovie(movie.imdbId)"><i class="material-icons" data-toggle="tooltip"
+                                            title="Delete">&#xE872;</i></button>
+                                </td>
+                            </tr>
+                           
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

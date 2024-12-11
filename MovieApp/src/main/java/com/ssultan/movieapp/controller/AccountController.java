@@ -26,7 +26,7 @@ public class AccountController {
     public ResponseEntity<?> loginAccount(@RequestBody LoginRequest loginRequest) {
 
         Map<String, String>  loginResponse = accountService.login(loginRequest);
-        System.out.println(loginResponse);
+
         return ResponseEntity.ok(loginResponse);
     }
 

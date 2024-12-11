@@ -1,1 +1,30 @@
-<p>home works!</p>
+<a class="link" href="https://codepen.io/simoberny/pen/qxxOqj" target="_blank">Dark Version</a>
+<div class="input-group">
+    <div class="form-outline" data-mdb-input-init>
+        <input type="text" id="tacktitle" class="form-control" placeholder="Movie Search..." [value]=homeMovie.title
+            #inputTitle (keyup)="changeTitle(inputTitle.value)">
+    </div>
+
+    <button class="btn btn-primary" type="submit" (click)="searchMovieByTitle(inputTitle.value)">Search</button>
+</div>
+<div *ngFor="let movie of homeMovies "  class="movie_card" id="bright">
+    <div class="info_section">
+        <div class="movie_header">
+            <img class="locandina"
+                [src]="movie.poster" />
+            <h1>{{ movie.title }}</h1>
+            <h4>{{ movie.year }}</h4>
+            <h4> {{ movie.actors}}</h4>
+            <p class="type">{{ movie.type }}</p>
+        </div>
+        <br/><br />
+        <div class="movie_desc">
+            <p class="text">
+                {{ movie.plot}}
+            </p>
+        </div>
+    
+    </div>
+    <div class="blur_back bright_back"></div>
+
+</div>

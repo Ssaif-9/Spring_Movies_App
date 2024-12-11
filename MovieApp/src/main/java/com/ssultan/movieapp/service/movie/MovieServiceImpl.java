@@ -36,11 +36,11 @@ public class MovieServiceImpl implements MovieService {
 
 
     @Override
-    public MovieDto saveMovieByImdbId(MovieOmdbRequest movie) {
-        if (movieRepo.existsByImdbId(movie.getImdbId())) {
+    public MovieDto saveMovieByImdbId(String imdbId) {
+        if (movieRepo.existsByImdbId(imdbId)) {
             throw new AlreadyExistMovieException("already Exist");
         }
-        MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
+        MovieFullInfo movieFullInfo  = MovieUtil.getAllMovieDetailsByImdbId(imdbId);
         Movie Localmovie = modelMapper.map(movieFullInfo, Movie.class);
         movieRepo.save(Localmovie);
         return  modelMapper.map(movieFullInfo, MovieDto.class);
@@ -97,13 +97,14 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void deleteMovieByImdbId(String imdbId) {
+    public MovieDto deleteMovieByImdbId(String imdbId) {
 
         if (!movieRepo.existsByImdbId(imdbId)) {
             throw new NotFoundMovieException("NO Movie To Delete");
         }
         Movie movie = movieRepo.findByImdbId(imdbId);
         movieRepo.deleteById(movie.getId());
+        return modelMapper.map(movie,MovieDto.class);
     }
 
     @Override

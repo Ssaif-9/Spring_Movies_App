@@ -1,5 +1,7 @@
 package com.ssultan.movieapp.model.dtos;
 
+import jakarta.persistence.Column;
+
 public class MovieDto {
     private String title;
     private String type;
@@ -7,18 +9,22 @@ public class MovieDto {
     private String year;
     private String poster;
     private String actors;
+    private String plot;
+    private String imdbRating;
 
     public MovieDto(){
 
     }
 
-    public MovieDto(String title, String type, String imdbId, String year, String poster, String actors) {
+    public MovieDto(String title, String type, String imdbId, String year, String poster, String actors, String plot, String imdbRating) {
         this.title = title;
         this.type = type;
         this.imdbId = imdbId;
         this.year = year;
         this.poster = poster;
         this.actors = actors;
+        this.plot = plot;
+        this.imdbRating = imdbRating;
     }
 
     public String getTitle() {
@@ -66,6 +72,18 @@ public class MovieDto {
     public void setActors(String actors) {
         this.actors = actors;
     }
+    public String getPlot() {
+        return plot;
+    }
+    public void setPlot(String plot) {
+        this.plot = plot;
+    }
+    public String getImdbRating() {
+        return imdbRating;
+    }
+    public void setImdbRating(String imdbRating) {
+        this.imdbRating = imdbRating;
+    }
 
 
     @Override
@@ -77,6 +95,8 @@ public class MovieDto {
                 ", year='" + year + '\'' +
                 ", poster='" + poster + '\'' +
                 ", actors='" + actors + '\'' +
+                ", plot='" + plot + '\'' +
+                ", imdbRating='" + imdbRating + '\'' +
                 '}';
     }
 

@@ -21,8 +21,8 @@ public class AdminRestController {
     }
 
     @PostMapping("/addById")
-    public MovieDto addMovieById(@RequestBody MovieOmdbRequest movieOmdbRequest) {
-        return movieService.saveMovieByImdbId(movieOmdbRequest);
+    public MovieDto addMovieById(@RequestBody String movieImdbId) {
+        return movieService.saveMovieByImdbId(movieImdbId);
     }
 
     @PostMapping("/addByTitle")

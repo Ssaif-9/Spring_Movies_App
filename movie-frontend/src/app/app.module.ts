@@ -10,22 +10,26 @@ import { MovieComponent } from './component/movie/movie.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MovieOperationComponent } from './component/movie-operation/movie-operation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    DashboardComponent,
     MovieComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     LoginComponent,
+    DashboardComponent,
+    MovieOperationComponent,
+    HomeComponent,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
