@@ -20,3 +20,18 @@ This project is a fully-functional movie application developed using Spring Boot
 The following diagram represents the Entity-Relationship Diagram (ERD) for the application's database.
 ![Entity-Relationship Diagram](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/ERD.png)
 
+### Project Architecture
+
+The project follows a well-structured architecture pattern:
+
+- **Model-View-Controller (MVC)**: The application separates concerns using the MVC pattern, where:
+    - **Model**: Represents the data and business logic (Entities, Services).
+    - **View**: The frontend that displays data to the user Angular (HTML, CSS, TypeScript).
+    - **Controller**: Manages user requests and responses (Spring Controllers).
+
+- **Client-Server Architecture**: The application uses a client-server architecture, where:
+    - The **client** (frontend) interacts with the **server** (backend) to fetch and manipulate data.
+    - The **server** (backend) processes requests, communicates with the database, and returns responses.
+
+- **REST API**: The application exposes RESTful endpoints to facilitate communication between the client and server. These endpoints follow standard HTTP methods (GET, POST, PUT, DELETE) for CRUD operations.
+
