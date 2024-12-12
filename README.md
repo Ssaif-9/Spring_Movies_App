@@ -103,7 +103,7 @@ The project follows a well-structured architecture pattern:
    Navigate to `http://localhost:8080` to use the application.
 
 #### for Angular (Frontend)
-1. Install and Start:
+ Install and Start:
 
     ```bash
     cd movie-frontend
@@ -114,4 +114,70 @@ The project follows a well-structured architecture pattern:
     Access the application:
    Navigate to `http://localhost:4200` to use the application.
 
-   
+
+# API Endpoints
+
+<details>
+<summary>Auth Controller</summary>
+
+### 1. `POST /api/v1/auth/login`
+- **Description**: cheak Authontication and authorization.
+</details>
+
+<details>
+<summary>Admin Controller</summary>
+
+### 1. `GET /api/v1/admin`
+- **Description**: List all movie.
+
+### 2. `POST /api/v1/admin/add/imdbId`
+- **Description**: Add one movie by imdbId.
+
+### 3. `POST /api/v1/admin/add/title`
+- **Description**: Add one movie by title.
+
+### 4. `POST /api/v1/admin/addList/imdbId`
+- **Description**: Add List of movies by imdbId.
+
+### 5. `POST /api/v1/admin//delete/imdbId`
+- **Description**: Delete one movie by imdbId.
+
+### 6. `POST /api/v1/admin//deleteList/imdbId`
+- **Description**: Delete List of movies by imdbId.
+
+
+</details>
+
+<details>
+<summary>User Controller</summary>
+
+### 1. `GET /cards/{customerId}`
+- **Description**: Retrieve all cards for a specific customer.
+
+### 2. `POST /cards/{customerId}`
+- **Description**: Add a new card for a specific customer.
+
+</details>
+
+<details>
+<summary>Test Controller</summary>
+
+### 1. `GET /api/v1/home/all`
+- **Description**: List all movie without pages.
+
+### 2. `GET /api/v1/home/"/page/{page}`
+- **Description**: List all movie with pages.
+
+### 3. `GET /api/v1/home/search/byTitle/{title}`
+- **Description**: Search movie by title.
+
+### 4. `GET /api/v1/home/search/byImdbId/{imdbId}`
+- **Description**: Search movie by imdbId.
+
+### 5. `GET /api/v1/"search/byYear/{year}"`
+- **Description**: Search movie by year.
+
+### 6. `GET /api/v1/home/gat/allInfo/{imdbId}"`
+- **Description**: Catch all movie information.
+
+</details>
