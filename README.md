@@ -77,6 +77,7 @@ The project follows a well-structured architecture pattern:
     ```sql
     CREATE DATABASE account_db;
     ```
+    ensure to run SQL Script to can login 
 
    Update the `application.properties` file with your MySQL credentials:
 
