@@ -103,7 +103,7 @@ The project follows a well-structured architecture pattern:
 
 ### Swagger Documentation
    Also can Access the application through Swagger for more Backend RESTApi
-   Navigate to `http://localhost:8080/swagger-ui/index.html#/` to show more backend Exclusive features.
+   Navigate to `http://localhost:8080/swagger-ui/index.html#/` to show more backend Exclusive APIs.
 
 #### for Angular (Frontend)
  Install and Start:
