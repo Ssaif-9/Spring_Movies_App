@@ -151,17 +151,6 @@ The project follows a well-structured architecture pattern:
 <details>
 <summary>User Controller</summary>
 
-### 1. `GET /cards/{customerId}`
-- **Description**: Retrieve all cards for a specific customer.
-
-### 2. `POST /cards/{customerId}`
-- **Description**: Add a new card for a specific customer.
-
-</details>
-
-<details>
-<summary>Test Controller</summary>
-
 ### 1. `GET /api/v1/home/all`
 - **Description**: List all movie without pages.
 
