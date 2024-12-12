@@ -198,7 +198,7 @@ The project follows a well-structured architecture pattern:
 
 ![Delete By Imdb Id](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/deleteByImdbId.png)
 
-![Video Demo](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/Demo.mb4)
+[![Video Demo](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/movieCard.png)](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/Demo.mb4)
 
 
 
