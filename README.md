@@ -101,7 +101,7 @@ The project follows a well-structured architecture pattern:
 
    Access the application:
    Navigate to `http://localhost:8080` to use the application.
-   
+
 ### Swagger Documentation
    Also can Access the application through Swagger for more Backend RESTApi
    Navigate to `http://localhost:8080/swagger-ui/index.html#/` to show more backend Exclusive features.
@@ -176,13 +176,28 @@ The project follows a well-structured architecture pattern:
 </details>
 
 
+# Preview
 
 
+![Movie Card](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/movieCard.png)
 
 
+![Dashboard](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/dashboard.png)
 
+![Full Information Card](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/fullInformation.png)
 
+![Pagination](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/pages.png)
 
+![Login Form](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/login.png)
+![Search Bar](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/searchBar.png)
+
+![Add By Imdb Id](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/addByImdbId.png)
+
+![Add By Title](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/addByTitle.png)
+
+![Delete By Imdb Id](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/deleteByImdbId.png)
+
+![Video Demo](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/Demo.mb4)
 
 
 
