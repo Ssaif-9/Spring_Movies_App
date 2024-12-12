@@ -43,15 +43,15 @@ public class UserRestController {
         return movieService.getMovieById(movieId);
     }
 
-//    @GetMapping("/search/imdbId/{imdbId}")
-//    public MovieFullInfo getMovieByImdbId(@PathVariable String imdbId){
-//        return movieService.getMovieByImdbId(imdbId);
-//    }
-//
-//    @GetMapping("search/title/{title}")
-//    public MovieFullInfo getMovieByTitle(@PathVariable String title){
-//        return movieService.getMovieByTitle(title);
-//    }
+    @GetMapping("/search/imdbId/{imdbId}")
+    public List<MovieDto> getMovieByImdbId(@PathVariable String imdbId){
+        return movieService.getMovieByImdbId(imdbId);
+    }
+
+    @GetMapping("search/title/{title}")
+    public List<MovieDto> getMovieByTitle(@PathVariable String title){
+        return movieService.getMovieByTitle(title);
+    }
 
     @GetMapping("search/year/{year}")
     public List<MovieDto> getMovieByYear(@PathVariable String year){
