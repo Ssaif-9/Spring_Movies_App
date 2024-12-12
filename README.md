@@ -2,16 +2,14 @@
 
 ## Overview
 
-This project is a fully-functional movie application developed using Spring Boot, Hibernate, MySQL, and Andular . The application allows Regular users to browse moviws, search for one or list move, show all information about movies and rate each movie. It also allows to  Admin to add and delete one or more movies using OMDB API through dashboard.
+This project is a fully-functional movie application developed using Spring Boot, Hibernate, MySQL, and Angular. The application allows regular users to browse movies, search for one or list movies, show all information about movies and rate each movie. It also allows the Admin to add and delete one or more movies using the OMDB API through the dashboard.
 
 ## Features
-
-- **User Management**: All user can login and navigate to accessed page base on Role.
-- **Admin Dashboard**: Admin can show all movie in local database,show full information of each movie , add one or list by Imdb Id or title  ,and delete one or more movie by Imdb Id.
+- **User Management**: All users can log in and navigate to the accessed page based on Role.
+- **Admin Dashboard**: Admin can show all movie in local database, show full information of each movie, add one or list by Imdb ID or title, and delete one or more movie by Imdb ID.
 - **Pagination for the movies List**: Regular user can show movie cards in pages with ablity to show full information for each movie.
-- **Search bar**: Regular user can search for movie by Imdb Id , Title or Year.
+- **Search bar**: Regular user can search for movie by Imdb ID, Title or Year.
 - **Rating Button**: Regular user can rate each movie.
-
 
 ## Design
 
@@ -133,7 +131,7 @@ The project follows a well-structured architecture pattern:
 <summary>Admin Controller</summary>
 
 ### 1. `GET /api/v1/admin`
-- **Description**: List all movie.
+- **Description**: List all movies.
 
 ### 2. `POST /api/v1/admin/add/imdbId`
 - **Description**: Add one movie by imdbId.
@@ -157,10 +155,10 @@ The project follows a well-structured architecture pattern:
 <summary>User Controller</summary>
 
 ### 1. `GET /api/v1/home/all`
-- **Description**: List all movie without pages.
+- **Description**: List all movies without pages.
 
 ### 2. `GET /api/v1/home/"/page/{page}`
-- **Description**: List all movie with pages.
+- **Description**: List all movies with pages.
 
 ### 3. `GET /api/v1/home/search/byTitle/{title}`
 - **Description**: Search movie by title.
@@ -172,7 +170,7 @@ The project follows a well-structured architecture pattern:
 - **Description**: Search movie by year.
 
 ### 6. `GET /api/v1/home/gat/allInfo/{imdbId}"`
-- **Description**: Catch all movie information.
+- **Description**: Catch all movie informations.
 
 </details>
 
