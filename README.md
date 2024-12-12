@@ -102,6 +102,9 @@ The project follows a well-structured architecture pattern:
    Access the application:
    Navigate to `http://localhost:8080` to use the application.
 
+   Also can Access the application through Swagger for more Backend RESTApi
+   Navigate to `http://localhost:8080/swagger-ui/index.html#/` to show more backend Exclusive features.
+
 #### for Angular (Frontend)
  Install and Start:
 
@@ -170,3 +173,17 @@ The project follows a well-structured architecture pattern:
 - **Description**: Catch all movie information.
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### For Any Question please communicate with me [Linkedin](https://www.linkedin.com/in/seif-eldin-sultan-90b740233/)
