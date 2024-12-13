@@ -9,6 +9,8 @@ import com.ssultan.movieapp.reposatiry.RatingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class RatingServiceImp implements RatingService {
 
@@ -25,11 +27,11 @@ public class RatingServiceImp implements RatingService {
 
 
     @Override
-    public void rateMovie(Long accountId, String movieImdbId, Integer rating) {
+    public void rateMovie( String movieImdbId, Integer rating) {
         if (rating < 0 || rating > 10) {
             throw new IllegalArgumentException("Rating must be between 0 and 10");
         }
-        Account account = accountRepo.findById(accountId).get();
+        Account account = accountRepo.findByUsername("user");
         Movie movie = movieRepo.findByImdbId(movieImdbId);
 
         Rating existingRating = ratingRepo.findByAccountAndMovie(account,movie).orElse(null);
@@ -48,10 +50,14 @@ public class RatingServiceImp implements RatingService {
     }
 
     @Override
-    public Integer getRating( Long accountId, String movieImdbId) {
-        Account account = accountRepo.findById(accountId).get();
+    public Integer getRating(String movieImdbId) {
+        Account account = accountRepo.findByUsername("user");
         Movie movie = movieRepo.findByImdbId(movieImdbId);
-        Rating rating = ratingRepo.findByAccountAndMovie(account,movie).orElse(null);
-        return rating.getRating();
+
+        Optional<Rating> rating = ratingRepo.findByAccountAndMovie(account,movie);
+        if (rating.isEmpty()) {
+            return 0;
+        }
+        return rating.get().getRating();
     }
 }

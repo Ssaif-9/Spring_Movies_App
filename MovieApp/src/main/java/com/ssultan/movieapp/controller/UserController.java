@@ -5,6 +5,7 @@ import com.ssultan.movieapp.model.PageResponse;
 import com.ssultan.movieapp.model.dtos.MovieDto;
 import com.ssultan.movieapp.model.omdbmodel.MovieFullInfo;
 import com.ssultan.movieapp.service.movie.MovieService;
+import com.ssultan.movieapp.service.rating.RatingService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,12 +20,13 @@ import java.util.List;
 public class UserController {
 
     private final MovieService movieService;
-    private final ModelMapper modelMapper;
+
+    private final RatingService ratingService;
 
     @Autowired
-    public UserController(MovieService movieService, ModelMapper modelMapper) {
+    public UserController(MovieService movieService, RatingService ratingService) {
         this.movieService = movieService;
-        this.modelMapper = modelMapper;
+        this.ratingService = ratingService;
     }
 
     @GetMapping ("/all")
@@ -67,5 +69,17 @@ public class UserController {
        MovieFullInfo movieDtoList= movieService.getMovieFullInfo(imdbId);
         System.out.println(movieDtoList.toString());
         return ResponseEntity.ok(movieDtoList);
+    }
+
+    @GetMapping("rate/{imdbId}")
+    public  ResponseEntity<?> getMovieRate( @PathVariable String imdbId){
+        Integer rate = ratingService.getRating(imdbId);
+        return ResponseEntity.ok(rate);
+    }
+
+    @GetMapping("rate/{imdbId}/{rating}")
+    public ResponseEntity<?> rateMovie(@PathVariable String imdbId,@PathVariable Integer rating){
+        ratingService.rateMovie(imdbId,rating);
+        return ResponseEntity.ok().build();
     }
 }

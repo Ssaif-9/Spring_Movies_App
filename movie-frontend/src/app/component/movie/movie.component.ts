@@ -13,7 +13,7 @@ import { NgFor } from '@angular/common';
   imports: [NgFor]
 })
 export class MovieComponent {
-
+  movieRate : number = 0;
   movie: MovieFullInfo = new MovieFullInfo();
   imdbId: string = '';
   constructor(private movieService: MovieService, private route: ActivatedRoute) { }
@@ -27,6 +27,20 @@ export class MovieComponent {
     this.movieService.getFullInfo(this.imdbId).subscribe((data) => {
       this.movie = data;
     });
+    this.getRated();
   }
+
+  rateMovie(rate: number) {
+    this.movieService.rateMovie(this.imdbId, rate).subscribe((data) => {
+      this.movie = data;
+    });
+  }
+
+  getRated() {
+    this.movieService.getRated(this.imdbId).subscribe((data) => {
+      this.movieRate = data;
+    });
+  }
+
 
 }

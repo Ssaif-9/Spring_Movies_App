@@ -58,15 +58,15 @@ public class UserRestController {
         return movieService.getMovieByYear(year);
     }
 
-    @GetMapping("rate/{accountId}/{imdbId}")
-    public Integer getMovieRate(@PathVariable Long accountId, @PathVariable String imdbId){
-          return ratingService.getRating(accountId,imdbId);
-    }
+//    @GetMapping("rate/{accountId}/{imdbId}")
+//    public Integer getMovieRate(@PathVariable Long accountId, @PathVariable String imdbId){
+//          return ratingService.getRating(accountId,imdbId);
+//    }
 
-    @PostMapping("rate/{accountId}/{imdbId}/{rating}")
-    public void rateMovie(@PathVariable Long accountId,@PathVariable String imdbId,@PathVariable Integer rating){
-         ratingService.rateMovie(accountId,imdbId,rating);
-    }
+//    @PostMapping("rate/{accountId}/{imdbId}/{rating}")
+//    public void rateMovie(@PathVariable Long accountId,@PathVariable String imdbId,@PathVariable Integer rating){
+//         ratingService.rateMovie(accountId,imdbId,rating);
+//    }
 
 
     @ExceptionHandler(value = NotFoundMovieException.class)

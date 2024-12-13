@@ -21,7 +21,7 @@ export class MovieFullInfo{
     boxoffice : String = '';
     dvd: String = '';
     type: String = '';
-    imdbID: String = '';
+    imdbid: String = '';
     imdbvotes: String = '';
     imdbrating : String = '';
     metascore: String = '';
