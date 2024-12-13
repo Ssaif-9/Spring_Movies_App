@@ -172,6 +172,11 @@ The project follows a well-structured architecture pattern:
 ### 6. `GET /api/v1/home/gat/allInfo/{imdbId}"`
 - **Description**: Catch all movie informations.
 
+### 7. `GET /api/v1/home/gat/rate/{imdbId}"`
+- **Description**: Catch user movie rate.
+
+### 8. `GET /api/v1/home/gat/rate/{imdbId}/{rating}"`
+- **Description**: rate movie from 1 to 5 star.
 </details>
 
 
