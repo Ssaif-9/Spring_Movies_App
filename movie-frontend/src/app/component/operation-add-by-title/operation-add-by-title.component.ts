@@ -26,7 +26,7 @@ export class OperationAddByTitleComponent {
       alert(data);
     });
     this.router.navigate(['/dashboard']).then(() => {
-  window.location.reload();
+    window.location.reload();
   });
     }
 }

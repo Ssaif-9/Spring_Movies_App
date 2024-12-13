@@ -44,8 +44,8 @@ export class OperationDeleteByImdbidComponent {
     } else {
       alert('No IMDB IDs to dalete');
      }
-this.router.navigate(['/dashboard']).then(() => {
-  window.location.reload();
+    this.router.navigate(['/dashboard']).then(() => {
+    window.location.reload();
 });
    }
 }
