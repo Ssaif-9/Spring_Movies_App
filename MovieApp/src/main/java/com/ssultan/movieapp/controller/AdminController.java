@@ -42,7 +42,6 @@ public class AdminController {
 
     @PostMapping("/delete/imdbId")
     public ResponseEntity<?> deleteMovieByImdbId(@RequestBody String imdbId) {
-        System.out.println(imdbId);
         MovieDto movieDto= movieService.deleteMovieByImdbId(imdbId);
         return ResponseEntity.ok(movieDto);
     }

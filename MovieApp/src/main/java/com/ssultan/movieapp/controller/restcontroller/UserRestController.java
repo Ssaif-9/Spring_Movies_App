@@ -62,7 +62,7 @@ public class UserRestController {
 //    public Integer getMovieRate(@PathVariable Long accountId, @PathVariable String imdbId){
 //          return ratingService.getRating(accountId,imdbId);
 //    }
-
+//
 //    @PostMapping("rate/{accountId}/{imdbId}/{rating}")
 //    public void rateMovie(@PathVariable Long accountId,@PathVariable String imdbId,@PathVariable Integer rating){
 //         ratingService.rateMovie(accountId,imdbId,rating);

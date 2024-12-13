@@ -11,4 +11,6 @@ import java.util.Optional;
 @Repository
 public interface RatingRepo extends JpaRepository<Rating, Long> {
     Optional<Rating> findByAccountAndMovie(Account user, Movie movie);
+
+    Rating findByMovieId(Long id);
 }

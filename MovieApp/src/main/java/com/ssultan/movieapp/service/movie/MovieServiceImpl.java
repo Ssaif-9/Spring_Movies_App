@@ -1,12 +1,14 @@
 package com.ssultan.movieapp.service.movie;
 
 import com.ssultan.movieapp.entity.Movie;
+import com.ssultan.movieapp.entity.Rating;
 import com.ssultan.movieapp.exception.AlreadyExistMovieException;
 import com.ssultan.movieapp.exception.NotFoundMovieException;
 import com.ssultan.movieapp.model.omdbmodel.MovieFullInfo;
 import com.ssultan.movieapp.model.dtos.MovieDto;
 import com.ssultan.movieapp.model.requests.MovieOmdbRequest;
 import com.ssultan.movieapp.reposatiry.MovieRepo;
+import com.ssultan.movieapp.reposatiry.RatingRepo;
 import com.ssultan.movieapp.utils.MovieUtil;
 import com.ssultan.movieapp.model.PageResponse;
 import org.modelmapper.ModelMapper;
@@ -24,14 +26,16 @@ import java.util.stream.Collectors;
 public class MovieServiceImpl implements MovieService {
 
     private final MovieRepo movieRepo;
+    private final RatingRepo ratingRepo;
     private final ModelMapper modelMapper;
 
 
 
     @Autowired
-    public MovieServiceImpl(MovieRepo movieRepo, ModelMapper modelMapper) {
+    public MovieServiceImpl(MovieRepo movieRepo, ModelMapper modelMapper, RatingRepo ratingRepo) {
         this.movieRepo = movieRepo;
         this.modelMapper = modelMapper;
+        this.ratingRepo = ratingRepo;
     }
 
 
@@ -103,16 +107,20 @@ public class MovieServiceImpl implements MovieService {
             throw new NotFoundMovieException("NO Movie To Delete");
         }
         Movie movie = movieRepo.findByImdbId(imdbId);
+        Rating rating =ratingRepo.findByMovieId(movie.getId());
+        ratingRepo.delete(rating);
         movieRepo.deleteById(movie.getId());
         return modelMapper.map(movie,MovieDto.class);
     }
 
     @Override
     public void deleteBatchMoviesByImdbId(List<String> imdbIds) {
-        imdbIds.stream()
-                .filter(movieRepo::existsByImdbId)
-                .map(movieRepo::findByImdbId)
-                .forEach((movie-> movieRepo.deleteById(movie.getId())));
+        for (String imdbId : imdbIds) {
+            if (!movieRepo.existsByImdbId(imdbId)) {
+                throw new NotFoundMovieException("NO Movie To Delete");
+            }
+            deleteMovieByImdbId(imdbId);
+        }
     }
 
     @Override
