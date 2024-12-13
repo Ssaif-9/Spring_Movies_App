@@ -100,17 +100,38 @@ public class MovieServiceImpl implements MovieService {
         movieRepo.deleteById(movieId);
     }
 
-    @Override
+//    @Override
+//    public MovieDto deleteMovieByImdbId(String imdbId) {
+//
+//        if (!movieRepo.existsByImdbId(imdbId)) {
+//            throw new NotFoundMovieException("NO Movie To Delete");
+//        }
+//        Movie movie = movieRepo.findByImdbId(imdbId);
+//        if(!ratingRepo.existsByMovieId(movie.getId())){
+//            throw new NotFoundMovieException("NO Movie To Delete");
+//        }
+//        Rating rating =ratingRepo.findByMovieId(movie.getId());
+//
+//        ratingRepo.delete(rating);
+//        movieRepo.deleteById(movie.getId());
+//        return modelMapper.map(movie,MovieDto.class);
+//    }
     public MovieDto deleteMovieByImdbId(String imdbId) {
 
-        if (!movieRepo.existsByImdbId(imdbId)) {
-            throw new NotFoundMovieException("NO Movie To Delete");
-        }
+        // Check if the movie exists
         Movie movie = movieRepo.findByImdbId(imdbId);
-        Rating rating =ratingRepo.findByMovieId(movie.getId());
-        ratingRepo.delete(rating);
+        if (movie == null) {
+            throw new NotFoundMovieException("No movie found to delete");
+        }
+
+        // Check if the movie has a rating
+        Rating rating = ratingRepo.findByMovieId(movie.getId());
+        if (rating != null) {
+            ratingRepo.delete(rating);
+        }
         movieRepo.deleteById(movie.getId());
-        return modelMapper.map(movie,MovieDto.class);
+
+        return modelMapper.map(movie, MovieDto.class);
     }
 
     @Override
