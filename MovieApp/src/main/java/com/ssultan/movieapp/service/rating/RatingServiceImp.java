@@ -28,7 +28,7 @@ public class RatingServiceImp implements RatingService {
 
     @Override
     public void rateMovie( String movieImdbId, Integer rating) {
-        if (rating < 0 || rating > 10) {
+        if (rating < 0 || rating > 5) {
             throw new IllegalArgumentException("Rating must be between 0 and 10");
         }
         Account account = accountRepo.findByUsername("user");
