@@ -150,7 +150,8 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<MovieDto> getMovieByTitle(String movieTitle) {
         if (!movieRepo.existsByTitle(movieTitle)) {
-            throw new NotFoundMovieException("not found");
+            return new ArrayList<MovieDto>();
+            //throw new NotFoundMovieException("not found");
         }
         Movie movie = movieRepo.findByTitle(movieTitle);
         MovieFullInfo movieFullInfo=MovieUtil.getAllMovieDetailsByTitleAndYear(movie.getTitle(),movie.getYear());
@@ -164,7 +165,8 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<MovieDto> getMovieByImdbId(String movieImdbId) {
         if (!movieRepo.existsByImdbId(movieImdbId)) {
-            throw new NotFoundMovieException("not found");
+            return new ArrayList<MovieDto>();
+            //throw new NotFoundMovieException("not found");
         }
         Movie movie = movieRepo.findByImdbId(movieImdbId);
         MovieFullInfo movieFullInfo=MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
@@ -176,10 +178,11 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<MovieDto> getMovieByYear(String movieYear) {
-        List<Movie> movies = movieRepo.findByYear(movieYear);
-        if (movies.isEmpty()){
-            throw new NotFoundMovieException("not found");
+        if (!movieRepo.existsByYear(movieYear)) {
+            return new ArrayList<MovieDto>();
+            //throw new NotFoundMovieException("not found");
         }
+        List<Movie> movies = movieRepo.findByYear(movieYear);
         return movies.stream().map(movie ->modelMapper.map(movie,MovieDto.class)).collect(Collectors.toList());
     }
 

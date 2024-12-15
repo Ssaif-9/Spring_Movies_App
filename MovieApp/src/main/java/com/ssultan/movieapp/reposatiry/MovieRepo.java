@@ -15,10 +15,12 @@ public interface MovieRepo extends JpaRepository<Movie, Long> {
 
     Boolean existsByTitle(String title);
     Boolean existsByImdbId(String imdbId);
+    Boolean existsByYear(String movieYear);
 
     Movie findByTitle(String title);
     Movie findByImdbId(String imdbId);
     List<Movie> findByYear(String Year);
 
     Page<Movie> findAll(Pageable pageable);
+
 }

@@ -49,16 +49,25 @@ export class SearchComponent {
     if (this.searchType === 'imbdId') {
       // Call the service to search by IMDB ID
       this.searchService.searchMovieByimdbId(this.searchTerm).subscribe(data => {
+         if (data.length === 0) {
+        alert('No movie found with the Imdb Id: ' + this.searchTerm);
+      }
       this.movies = data;
       });
     } else if (this.searchType === 'title') {
       // Call the service to search by Title
       this.searchService.searchMovieByTitle(this.searchTerm).subscribe(data => {
+      if (data.length === 0) {
+        alert('No movie found with the title: ' + this.searchTerm);
+      }
       this.movies = data;
       });
     } else if (this.searchType === 'year') {
       // Call the service to search by Year
       this.searchService.searchMovieByYear(this.searchTerm).subscribe(data => {
+         if (data.length === 0) {
+        alert('No movie found with Year: ' + this.searchTerm);
+      }
       this.movies = data;
       });
     }
