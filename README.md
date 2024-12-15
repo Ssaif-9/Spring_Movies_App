@@ -5,7 +5,7 @@
 This project is a fully-functional movie application developed using Spring Boot, Hibernate, MySQL, and Angular. The application allows regular users to browse movies, search for one or list movies, show all information about movies and rate each movie. It also allows the Admin to add and delete one or more movies using the OMDB API through the dashboard.
 
 ## Features
-- **User Management**: All users can log in and navigate to the accessed page based on Role.
+- **User Management**: All users can create new account ,log in and navigate to the accessed page based on Role.
 - **Admin Dashboard**: Admin can show all movie in local database, show full information of each movie, add one or list by Imdb ID or title, and delete one or more movie by Imdb ID.
 - **Pagination for the movies List**: Regular user can show movie cards in pages with ablity to show full information for each movie.
 - **Search bar**: Regular user can search for movie by Imdb ID, Title or Year.
@@ -127,6 +127,11 @@ The project follows a well-structured architecture pattern:
 - **Description**: cheak Authontication and authorization.
 </details>
 
+### 2. `POST /api/v1/auth/signin`
+- **Description**: user can create new account.
+</details>
+
+
 <details>
 <summary>Admin Controller</summary>
 
@@ -172,10 +177,10 @@ The project follows a well-structured architecture pattern:
 ### 6. `GET /api/v1/home/gat/allInfo/{imdbId}"`
 - **Description**: Catch all movie informations.
 
-### 7. `GET /api/v1/home/gat/rate/{imdbId}"`
+### 7. `GET /api/v1/home/gat/rate/{userName}/{imdbId}"`
 - **Description**: Catch user movie rate.
 
-### 8. `GET /api/v1/home/gat/rate/{imdbId}/{rating}"`
+### 8. `GET /api/v1/home/gat/rate/{userName}/{imdbId}/{rating}"`
 - **Description**: rate movie from 1 to 5 star.
 </details>
 
@@ -184,23 +189,15 @@ The project follows a well-structured architecture pattern:
 
 
 ![Movie Card](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/movieCard.png)
-
-
 ![Dashboard](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/dashboard.png)
-
 ![Full Information Card](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/fullInformation.png)
-
 ![Pagination](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/pages.png)
-
 ![Login Form](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/login.png)
+![Signin Form](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/signin.png)
 ![Search Bar](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/searchBar.png)
-
 ![Add By Imdb Id](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/addByImdbId.png)
-
 ![Add By Title](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/addByTitle.png)
-
 ![Delete By Imdb Id](https://github.com/Ssaif-9/Spring_Movies_App/blob/main/Attachment/deleteByImdbId.png)
-
 
 [Also can watch Video Demo for here..](https://drive.google.com/drive/folders/18IxGJh4YuI7FHYX4J7OyzpriykjeE6Oc?direction=a)
 
