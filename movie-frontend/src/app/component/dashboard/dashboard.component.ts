@@ -50,6 +50,7 @@ export class DashboardComponent {
     this.movieService.getFullInfo(imdbId).subscribe(data => {
       this.fullMovie = data;
     });
-    this.router.navigate(['/movie', imdbId]);
+
+    this.router.navigate(['/movie/admin', imdbId]);
   }
 }

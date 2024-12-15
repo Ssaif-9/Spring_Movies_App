@@ -22,10 +22,13 @@ export class SearchComponent {
   searchType: String = '';
   searchTerm: String = '';
 
+  username: String = '';
+
   constructor(private searchService: SearchService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
+      this.username = this.route.snapshot.paramMap.get('username') || '';
       // Check if a parameter exists and assign it accordingly
       if (params.has('imbdId')) {
         this.searchType = 'imbdId';

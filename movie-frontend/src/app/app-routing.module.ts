@@ -21,9 +21,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'preview', component: HomeComponent },
   { path: 'movie', component: MovieComponent },
-  { path: 'search/imdbId/:imbdId', component: SearchComponent },
-  { path: 'search/title/:title', component: SearchComponent },
-  { path: 'search/year/:year', component: SearchComponent },
+  { path: 'search/:username/imdbId/:imbdId', component: SearchComponent },
+  { path: 'search/:username/title/:title', component: SearchComponent },
+  { path: 'search/:username/year/:year', component: SearchComponent },
 
   { path: 'movie/:username/:imdbId', component: MovieComponent },
   { path: '', component: LoginComponent },

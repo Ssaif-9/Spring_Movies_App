@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="home">MV APP</a>
+        <a class="navbar-brand" (click)="navigateToPage()">MV APP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -62,7 +62,7 @@
                     <li class="list-group-item" *ngFor="let rating of movie.ratings">
                         <strong>{{ rating.source }}:</strong> {{ rating.value }}
                     </li>
-                    <li class="list-group-item" >
+                    <li class="list-group-item" *ngIf="username !== 'admin'" >
                         <fieldset class="rating">
                             <strong> {{ username }} Rating : &nbsp; &nbsp; &nbsp; </strong>
                             <input type="radio" id="star5" name="rating" value="5" [checked]="movieRate === 5" (click)="rateMovie(5)" />

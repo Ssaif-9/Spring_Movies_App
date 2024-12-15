@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MovieService } from './movie.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieFullInfo } from './movie.model';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-movie',
@@ -10,14 +10,14 @@ import { NgFor } from '@angular/common';
   
   templateUrl: './movie.component.html',
   styleUrl: './movie.component.css',
-  imports: [NgFor]
+  imports: [NgIf,NgFor]
 })
 export class MovieComponent {
   movieRate : number = 0;
   movie: MovieFullInfo = new MovieFullInfo();
   imdbId: string = '';
   username: string = '';
-  constructor(private movieService: MovieService, private route: ActivatedRoute) { }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
   setImdbId(imdbId: string) {
     this.imdbId = imdbId;
@@ -44,5 +44,12 @@ export class MovieComponent {
     });
   }
 
+   navigateToPage() {
+    if (this.username === 'admin') {
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.router.navigate(['/home']);
+    }
+  }
 
 }

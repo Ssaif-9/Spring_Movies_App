@@ -60,11 +60,11 @@ export class HomeComponent {
   // Trigger search logic
   onSearch() {
     if (this.searchCriteria === 'TITLE') {
-      this.router.navigate(['/search/title/', this.searchText]);
+      this.router.navigate(['/search', this.username, 'title', this.searchText]);
     } else if (this.searchCriteria === 'IMDB_ID') { 
-      this.router.navigate(['/search/imdbId/', this.searchText]);
+      this.router.navigate(['/search', this.username, 'imdbId', this.searchText]);
     } else if (this.searchCriteria === 'YEAR') {
-      this.router.navigate(['/search/year/', this.searchText]);
+      this.router.navigate(['/search', this.username, 'year', this.searchText]);
     }
   }
 
