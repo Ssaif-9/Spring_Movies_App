@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieDto } from '../dashboard/dashboard.model';
 import { NgFor } from '@angular/common';
 import { HomeMovie } from '../home/home.model';
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'app-search',
@@ -21,7 +22,7 @@ export class SearchComponent {
   searchType: String = '';
   searchTerm: String = '';
 
-  constructor(private homeService: HomeService, private route: ActivatedRoute) { }
+  constructor(private searchService: SearchService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -44,17 +45,17 @@ export class SearchComponent {
    searchFunction(search: String): void {
     if (this.searchType === 'imbdId') {
       // Call the service to search by IMDB ID
-      this.homeService.searchMovieByimdbId(this.searchTerm).subscribe(data => {
+      this.searchService.searchMovieByimdbId(this.searchTerm).subscribe(data => {
       this.movies = data;
       });
     } else if (this.searchType === 'title') {
       // Call the service to search by Title
-      this.homeService.searchMovieByTitle(this.searchTerm).subscribe(data => {
+      this.searchService.searchMovieByTitle(this.searchTerm).subscribe(data => {
       this.movies = data;
       });
     } else if (this.searchType === 'year') {
       // Call the service to search by Year
-      this.homeService.searchMovieByYear(this.searchTerm).subscribe(data => {
+      this.searchService.searchMovieByYear(this.searchTerm).subscribe(data => {
       this.movies = data;
       });
     }

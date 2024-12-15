@@ -71,15 +71,15 @@ public class UserController {
         return ResponseEntity.ok(movieDtoList);
     }
 
-    @GetMapping("rate/{imdbId}")
-    public  ResponseEntity<?> getMovieRate( @PathVariable String imdbId){
-        Integer rate = ratingService.getRating(imdbId);
+    @GetMapping("rate/{username}/{imdbId}")
+    public  ResponseEntity<?> getMovieRate(@PathVariable String username, @PathVariable String imdbId){
+        Integer rate = ratingService.getRating(username,imdbId);
         return ResponseEntity.ok(rate);
     }
 
-    @GetMapping("rate/{imdbId}/{rating}")
-    public ResponseEntity<?> rateMovie(@PathVariable String imdbId,@PathVariable Integer rating){
-        ratingService.rateMovie(imdbId,rating);
+    @GetMapping("rate/{username}/{imdbId}/{rating}")
+    public ResponseEntity<?> rateMovie(@PathVariable String username ,@PathVariable String imdbId,@PathVariable Integer rating){
+        ratingService.rateMovie(username,imdbId,rating);
         return ResponseEntity.ok().build();
     }
 }

@@ -62,24 +62,27 @@
                     <li class="list-group-item" *ngFor="let rating of movie.ratings">
                         <strong>{{ rating.source }}:</strong> {{ rating.value }}
                     </li>
+                    <li class="list-group-item" >
+                        <fieldset class="rating">
+                            <strong> {{ username }} Rating : &nbsp; &nbsp; &nbsp; </strong>
+                            <input type="radio" id="star5" name="rating" value="5" [checked]="movieRate === 5" (click)="rateMovie(5)" />
+                            <label for="star5">5 stars</label>
+                            <input type="radio" id="star4" name="rating" value="4" [checked]="movieRate === 4" (click)="rateMovie(4)" />
+                            <label for="star4">4 stars</label>
+                            <input type="radio" id="star3" name="rating" value="3" [checked]="movieRate === 3" clicked (click)="rateMovie(3)" />
+                            <label for="star3">3 stars</label>
+                            <input type="radio" id="star2" name="rating" value="2" [checked]="movieRate === 2" clicked (click)="rateMovie(2)" />
+                            <label for="star2">2 stars</label>
+                            <input type="radio" id="star1" name="rating" value="1" [checked]="movieRate === 1" clicked (click)="rateMovie(1)" />
+                            <label for="star1">1 star</label>
+                        </fieldset>
+                    </li>
+
                 </ul>
             </div>
 
         
-      <fieldset class="rating">
-      
-            <input type="radio" id="star5" name="rating" value="5" [checked]="movieRate === 5" (click)="rateMovie(5)"/>
-            <label for="star5">5 stars</label>
-            <input type="radio" id="star4" name="rating" value="4" [checked]="movieRate === 4" (click)="rateMovie(4)"/>
-            <label for="star4">4 stars</label>
-            <input type="radio" id="star3" name="rating" value="3" [checked]="movieRate === 3" clicked (click)="rateMovie(3)"/>
-            <label for="star3">3 stars</label>
-            <input type="radio" id="star2" name="rating" value="2" [checked]="movieRate === 2" clicked (click)="rateMovie(2)"/>
-            <label for="star2">2 stars</label>
-            <input type="radio" id="star1" name="rating" value="1" [checked]="movieRate === 1" clicked (click)="rateMovie(1)"/>
-            <label for="star1">1 star</label>
-            <p>     Your Rate : </p>
-        </fieldset>      
+     
 
         
         </div>

@@ -27,11 +27,11 @@ public class RatingServiceImp implements RatingService {
 
 
     @Override
-    public void rateMovie( String movieImdbId, Integer rating) {
+    public void rateMovie(String userName, String movieImdbId, Integer rating) {
         if (rating < 0 || rating > 5) {
             throw new IllegalArgumentException("Rating must be between 0 and 10");
         }
-        Account account = accountRepo.findByUsername("user");
+        Account account = accountRepo.findByUsername(userName);
         Movie movie = movieRepo.findByImdbId(movieImdbId);
 
         Rating existingRating = ratingRepo.findByAccountAndMovie(account,movie).orElse(null);
@@ -50,8 +50,8 @@ public class RatingServiceImp implements RatingService {
     }
 
     @Override
-    public Integer getRating(String movieImdbId) {
-        Account account = accountRepo.findByUsername("user");
+    public Integer getRating(String userName,String movieImdbId) {
+        Account account = accountRepo.findByUsername(userName);
         Movie movie = movieRepo.findByImdbId(movieImdbId);
 
         Optional<Rating> rating = ratingRepo.findByAccountAndMovie(account,movie);

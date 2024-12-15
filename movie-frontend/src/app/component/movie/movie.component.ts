@@ -16,6 +16,7 @@ export class MovieComponent {
   movieRate : number = 0;
   movie: MovieFullInfo = new MovieFullInfo();
   imdbId: string = '';
+  username: string = '';
   constructor(private movieService: MovieService, private route: ActivatedRoute) { }
 
   setImdbId(imdbId: string) {
@@ -23,6 +24,7 @@ export class MovieComponent {
   } 
   
   ngOnInit() {
+    this.username = this.route.snapshot.paramMap.get('username') || '';
     this.imdbId = this.route.snapshot.paramMap.get('imdbId') || '';
     this.movieService.getFullInfo(this.imdbId).subscribe((data) => {
       this.movie = data;
@@ -31,13 +33,13 @@ export class MovieComponent {
   }
 
   rateMovie(rate: number) {
-    this.movieService.rateMovie(this.imdbId, rate).subscribe((data) => {
+    this.movieService.rateMovie(this.username,this.imdbId, rate).subscribe((data) => {
       this.movie = data;
     });
   }
 
   getRated() {
-    this.movieService.getRated(this.imdbId).subscribe((data) => {
+    this.movieService.getRated(this.username,this.imdbId).subscribe((data) => {
       this.movieRate = data;
     });
   }

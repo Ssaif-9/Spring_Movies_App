@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'search/title/:title', component: SearchComponent },
   { path: 'search/year/:year', component: SearchComponent },
 
-  { path: 'movie/:imdbId', component: MovieComponent },
+  { path: 'movie/:username/:imdbId', component: MovieComponent },
   { path: '', component: LoginComponent },
   { path: '**' , component : PageNotFoundComponent },
 ];

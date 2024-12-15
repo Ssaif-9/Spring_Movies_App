@@ -14,12 +14,12 @@ export class MovieService {
     return this.http.get(`${this.baseUrl}/gat/allInfo/${imdbId}`);
   }
 
-  rateMovie(imdbId:String,rate:number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/rate/${imdbId}/${rate}`);
+  rateMovie(username:String,imdbId:String,rate:number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/rate/${username}/${imdbId}/${rate}`);
   } 
 
-  getRated(imdbId:String): Observable<any> {
-    return this.http.get(`${this.baseUrl}/rate/${imdbId}`);
+  getRated(username:String,imdbId:String): Observable<any> {
+    return this.http.get(`${this.baseUrl}/rate/${username}/${imdbId}`);
   }
 
 

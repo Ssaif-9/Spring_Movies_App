@@ -19,15 +19,5 @@ export class HomeService {
     return this.http.get(`${this.baseUrl}/page/${page}`);
   }
 
-  searchMovieByTitle(title: String): Observable<any> {
-    return this.http.get(`${this.baseUrl}/search/byTitle/${title}`);
-  }
-
-  searchMovieByimdbId(imdbId: String): Observable<any> {
-    return this.http.get(`${this.baseUrl}/search/byImdbId/${imdbId}`);
-  }
-
-  searchMovieByYear(year: String): Observable<any> {
-    return this.http.get(`${this.baseUrl}/search/byYear/${year}`);
-  }
+  
 } 

@@ -34,7 +34,7 @@ export class LoginComponent {
         if (role === 'ADMIN') {
           this.router.navigate(['/dashboard']);
         } else if (role === 'USER') {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home'], { queryParams: { username: username } });
         } else {
           alert('Unauthorized role!');
         }
