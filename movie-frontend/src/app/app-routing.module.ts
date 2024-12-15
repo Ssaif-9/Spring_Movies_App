@@ -9,9 +9,11 @@ import { SearchComponent } from './component/search/search.component';
 import { OperationDeleteByImdbidComponent } from './component/operation-delete-by-imdbid/operation-delete-by-imdbid.component';
 import { OperationAddByImdbidComponent } from './component/operation-add-by-imdbid/operation-add-by-imdbid.component';
 import { OperationAddByTitleComponent } from './component/operation-add-by-title/operation-add-by-title.component';
+import { SigninComponent } from './component/signin/signin.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'signin', component: SigninComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'addByImdbid', component: OperationAddByImdbidComponent },
   { path: 'addBytitle', component: OperationAddByTitleComponent },

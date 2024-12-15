@@ -16,6 +16,7 @@ import { SearchComponent } from './component/search/search.component';
 import { OperationAddByImdbidComponent } from './component/operation-add-by-imdbid/operation-add-by-imdbid.component';
 import { OperationAddByTitleComponent } from './component/operation-add-by-title/operation-add-by-title.component';
 import { OperationDeleteByImdbidComponent } from './component/operation-delete-by-imdbid/operation-delete-by-imdbid.component';
+import { SigninComponent } from './component/signin/signin.component';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { OperationDeleteByImdbidComponent } from './component/operation-delete-b
     BrowserModule,
     LoginComponent,
     DashboardComponent,
-    
+    SigninComponent,
     HomeComponent,
     AppRoutingModule,
     HttpClientModule,

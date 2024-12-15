@@ -3,8 +3,10 @@ package com.ssultan.movieapp.service.account;
 import com.ssultan.movieapp.entity.Account;
 import com.ssultan.movieapp.exception.InvalidAccountDataException;
 import com.ssultan.movieapp.model.requests.LoginRequest;
+import com.ssultan.movieapp.model.requests.SigninRequest;
 import com.ssultan.movieapp.model.response.LoginResponse;
 import com.ssultan.movieapp.reposatiry.AccountRepo;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +18,18 @@ import java.util.Optional;
 public class AccountServiceImp implements AccountService  {
 
     private final AccountRepo accountRepo;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public AccountServiceImp(AccountRepo accountRepo) {
+    public AccountServiceImp(AccountRepo accountRepo, ModelMapper modelMapper) {
         this.accountRepo = accountRepo;
+        this.modelMapper = modelMapper;
 
     }
 
     @Override
-    public void addAccount(Account account) {
+    public void addAccount(SigninRequest signinRequest) {
+        Account account = modelMapper.map(signinRequest, Account.class);
         accountRepo.save(account);
     }
 

@@ -23,10 +23,10 @@ public class AccountRestController {
         return accountService.getAccountById(accountId);
     }
 
-    @PostMapping
-    public void createAccount(@RequestBody Account account) {
-        accountService.addAccount(account);
-    }
+//    @PostMapping
+//    public void createAccount(@RequestBody Account account) {
+//        accountService.addAccount(account);
+//    }
 
     @ExceptionHandler(value = InvalidAccountDataException.class)
     ErrorException getInvalidAccountDataException(InvalidAccountDataException invalidAccountDataException) {
