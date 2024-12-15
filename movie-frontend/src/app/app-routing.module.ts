@@ -19,12 +19,10 @@ const routes: Routes = [
   { path: 'addBytitle', component: OperationAddByTitleComponent },
   { path: 'daleteImdbId', component: OperationDeleteByImdbidComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'preview', component: HomeComponent },
   { path: 'movie', component: MovieComponent },
   { path: 'search/:username/imdbId/:imbdId', component: SearchComponent },
   { path: 'search/:username/title/:title', component: SearchComponent },
   { path: 'search/:username/year/:year', component: SearchComponent },
-
   { path: 'movie/:username/:imdbId', component: MovieComponent },
   { path: '', component: LoginComponent },
   { path: '**' , component : PageNotFoundComponent },

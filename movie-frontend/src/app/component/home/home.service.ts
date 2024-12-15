@@ -12,9 +12,6 @@ export class HomeService {
  
   constructor(private http: HttpClient) { }
  
-  getHomeMovies(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/all`);
-  }
   getPagesHomeMovies(page:number): Observable<any> {
     return this.http.get(`${this.baseUrl}/page/${page}`);
   }

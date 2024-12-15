@@ -1,14 +1,12 @@
 package com.ssultan.movieapp.controller;
 
 
-import com.ssultan.movieapp.model.PageResponse;
+import com.ssultan.movieapp.model.response.PageResponse;
 import com.ssultan.movieapp.model.dtos.MovieDto;
 import com.ssultan.movieapp.model.omdbmodel.MovieFullInfo;
 import com.ssultan.movieapp.service.movie.MovieService;
 import com.ssultan.movieapp.service.rating.RatingService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

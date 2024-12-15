@@ -4,7 +4,6 @@ import com.ssultan.movieapp.entity.Account;
 import com.ssultan.movieapp.exception.InvalidAccountDataException;
 import com.ssultan.movieapp.model.requests.LoginRequest;
 import com.ssultan.movieapp.model.requests.SigninRequest;
-import com.ssultan.movieapp.model.response.LoginResponse;
 import com.ssultan.movieapp.reposatiry.AccountRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

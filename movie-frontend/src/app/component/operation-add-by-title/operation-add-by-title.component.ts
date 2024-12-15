@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieOperationService } from '../movie-operation/movie-operation.service';
+import { MovieOperationService } from '../../movie-operation-service/movie-operation.service';
 import { Router } from '@angular/router';
 
 @Component({

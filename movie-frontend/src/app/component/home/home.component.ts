@@ -24,8 +24,8 @@ export class HomeComponent {
   current_page: number =1;
   rows: number = 5;
  
-  searchCriteria: string = ''; // To hold the selected dropdown value
-  searchText: string = '';     // To hold the input text 
+  searchCriteria: string = ''; 
+  searchText: string = '';     
 
   constructor(private homeService: HomeService, private router: Router, private route: ActivatedRoute) {
     
@@ -74,11 +74,6 @@ export class HomeComponent {
     this.getPagesHomeMovies();
   }
   
-  getHomeMovies(): void {
-    this.homeService.getHomeMovies().subscribe(data => {
-      this.homeMovies = data
-    });
-  }
 
   getPagesHomeMovies(): void {
     this.homeService.getPagesHomeMovies(this.current_page).subscribe(data => {

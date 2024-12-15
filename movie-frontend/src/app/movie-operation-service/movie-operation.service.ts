@@ -31,18 +31,4 @@ export class MovieOperationService {
   deleteMovieByImdbIdList(imdbIdList:String[]): Observable<any> {
     return this.http.post(`${this.baseUrl}/deleteList/imdbId`,imdbIdList);
   }
-
-  
-  deleteMovieByTitle(title: String, year: string): Observable<any> {
-    const searchData = { title, year };
-    return this.http.post(`${this.baseUrl}/delete/title`, searchData);
-  }
-  
-  addMoviesByTitleList(titleList:[]): Observable<any> {
-    return this.http.post(`${this.baseUrl}/add/titleList`, titleList);
-  }
-
-  deleteMovieByTitleList(titleList:[]): Observable<any> {
-    return this.http.post(`${this.baseUrl}/delete/titleList`, titleList);
-  }
 }

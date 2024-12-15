@@ -1,10 +1,9 @@
 package com.ssultan.movieapp.service.movie;
 
-import com.ssultan.movieapp.entity.Movie;
 import com.ssultan.movieapp.model.omdbmodel.MovieFullInfo;
 import com.ssultan.movieapp.model.dtos.MovieDto;
 import com.ssultan.movieapp.model.requests.MovieOmdbRequest;
-import com.ssultan.movieapp.model.PageResponse;
+import com.ssultan.movieapp.model.response.PageResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,7 +31,6 @@ public interface MovieService {
     List<MovieDto> getMovieByYear(String movieYear);
 
     PageResponse<MovieDto> pageAllMovies(Integer pageNumber, Integer pageSize) ;
-
 
     MovieFullInfo getMovieFullInfo(String imdbId);
 }

@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableAutoConfiguration(exclude = {org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration.class})
 @OpenAPIDefinition(
         info = @Info(
-                title = "Movie App",
+                title = "Movie Application",
                 description = "Movie App Using OMDB API ",
                 version = "v1.0",
                 contact = @Contact(

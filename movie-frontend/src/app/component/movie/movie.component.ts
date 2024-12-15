@@ -48,7 +48,7 @@ export class MovieComponent {
     if (this.username === 'admin') {
       this.router.navigate(['/dashboard']);
     } else {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home'], { queryParams: { username: this.username } });
     }
   }
 

@@ -1,8 +1,9 @@
-package com.ssultan.movieapp.controller.restcontroller;
+package com.ssultan.movieapp.controller.backendrestcontroller;
 
 import com.ssultan.movieapp.entity.Account;
 import com.ssultan.movieapp.exception.ErrorException;
 import com.ssultan.movieapp.exception.InvalidAccountDataException;
+import com.ssultan.movieapp.model.requests.SigninRequest;
 import com.ssultan.movieapp.service.account.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +24,10 @@ public class AccountRestController {
         return accountService.getAccountById(accountId);
     }
 
-//    @PostMapping
-//    public void createAccount(@RequestBody Account account) {
-//        accountService.addAccount(account);
-//    }
+    @PostMapping
+    public void createAccount(@RequestBody SigninRequest signinRequest) {
+        accountService.addAccount(signinRequest);
+    }
 
     @ExceptionHandler(value = InvalidAccountDataException.class)
     ErrorException getInvalidAccountDataException(InvalidAccountDataException invalidAccountDataException) {

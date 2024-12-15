@@ -10,7 +10,7 @@ import com.ssultan.movieapp.model.requests.MovieOmdbRequest;
 import com.ssultan.movieapp.reposatiry.MovieRepo;
 import com.ssultan.movieapp.reposatiry.RatingRepo;
 import com.ssultan.movieapp.utils.MovieUtil;
-import com.ssultan.movieapp.model.PageResponse;
+import com.ssultan.movieapp.model.response.PageResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

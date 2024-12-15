@@ -1,4 +1,4 @@
-package com.ssultan.movieapp.controller.restcontroller;
+package com.ssultan.movieapp.controller.backendrestcontroller;
 
 import com.ssultan.movieapp.exception.ErrorException;
 import com.ssultan.movieapp.exception.NotFoundMovieException;
