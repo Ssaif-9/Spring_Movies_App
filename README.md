@@ -5,7 +5,7 @@
 This project is a fully-functional movie application developed using Spring Boot, Hibernate, MySQL, and Angular. The application allows regular users to browse movies, search for one or list movies, show all information about movies and rate each movie. It also allows the Admin to add and delete one or more movies using the OMDB API through the dashboard.
 
 ## Features
-- **User Management**: All users can create new account ,log in and navigate to the accessed page based on Role.
+- **User Management**: All users can create a new account ,log in and navigate to the accessed page based on Role.
 - **Admin Dashboard**: Admin can show all movie in local database, show full information of each movie, add one or list by Imdb ID or title, and delete one or more movie by Imdb ID.
 - **Pagination for the movies List**: Regular user can show movie cards in pages with ablity to show full information for each movie.
 - **Search bar**: Regular user can search for movie by Imdb ID, Title or Year.
@@ -125,11 +125,13 @@ The project follows a well-structured architecture pattern:
 
 ### 1. `POST /api/v1/auth/login`
 - **Description**: cheak Authontication and authorization.
-</details>
 
 ### 2. `POST /api/v1/auth/signin`
 - **Description**: user can create new account.
+
 </details>
+
+
 
 
 <details>
