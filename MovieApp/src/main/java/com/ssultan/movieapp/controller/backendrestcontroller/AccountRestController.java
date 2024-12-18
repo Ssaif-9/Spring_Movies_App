@@ -31,6 +31,6 @@ public class AccountRestController {
 
     @ExceptionHandler(value = InvalidAccountDataException.class)
     ErrorException getInvalidAccountDataException(InvalidAccountDataException invalidAccountDataException) {
-        return new ErrorException(invalidAccountDataException.getExceptionMessage(),invalidAccountDataException.getExceptionCode());
+        return new ErrorException(invalidAccountDataException.getExceptionMessage());
     }
 }

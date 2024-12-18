@@ -23,7 +23,6 @@ public class AccountServiceImp implements AccountService  {
     public AccountServiceImp(AccountRepo accountRepo, ModelMapper modelMapper) {
         this.accountRepo = accountRepo;
         this.modelMapper = modelMapper;
-
     }
 
     @Override
@@ -37,7 +36,7 @@ public class AccountServiceImp implements AccountService  {
     public Account getAccountById(Long accountId){
         Optional<Account> account = accountRepo.findById(accountId);
         if (account.isEmpty()) {
-            throw new InvalidAccountDataException("Not Fount Account With id :"+accountId,"404");
+            throw new InvalidAccountDataException("Not Fount Account With id :"+accountId);
         }
         return accountRepo.findById(accountId).get();
     }
@@ -48,7 +47,7 @@ public class AccountServiceImp implements AccountService  {
     public  Map<String, String> login(LoginRequest loginRequest) {
         Account account =accountRepo.findByUsernameAndPassword(loginRequest.getUsername(),loginRequest.getPassword());
         if (account == null) {
-            throw new InvalidAccountDataException("Not Fount Account With id :"+loginRequest.getUsername(),"404");
+            throw new InvalidAccountDataException("Not Fount Account With id :"+loginRequest.getUsername());
         }else{
             Map<String, String> response = new HashMap<>();
             response.put("username", account.getUsername());

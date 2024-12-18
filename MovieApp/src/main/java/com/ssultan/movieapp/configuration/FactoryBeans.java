@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class FactoryBeans {
+
     @Bean
     public ModelMapper getModelMapper() {
         return new ModelMapper();

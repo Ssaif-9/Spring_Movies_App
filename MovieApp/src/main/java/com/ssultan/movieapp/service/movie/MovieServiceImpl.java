@@ -29,8 +29,6 @@ public class MovieServiceImpl implements MovieService {
     private final RatingRepo ratingRepo;
     private final ModelMapper modelMapper;
 
-
-
     @Autowired
     public MovieServiceImpl(MovieRepo movieRepo, ModelMapper modelMapper, RatingRepo ratingRepo) {
         this.movieRepo = movieRepo;
@@ -154,8 +152,7 @@ public class MovieServiceImpl implements MovieService {
             //throw new NotFoundMovieException("not found");
         }
         Movie movie = movieRepo.findByTitle(movieTitle);
-        MovieFullInfo movieFullInfo=MovieUtil.getAllMovieDetailsByTitleAndYear(movie.getTitle(),movie.getYear());
-        MovieDto movieDto=modelMapper.map(movieFullInfo,MovieDto.class);
+        MovieDto movieDto=modelMapper.map(movie,MovieDto.class);
         List<MovieDto> movieDtoList=new ArrayList<>();
         movieDtoList.add(movieDto);
 
@@ -169,8 +166,7 @@ public class MovieServiceImpl implements MovieService {
             //throw new NotFoundMovieException("not found");
         }
         Movie movie = movieRepo.findByImdbId(movieImdbId);
-        MovieFullInfo movieFullInfo=MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
-        MovieDto movieDto=modelMapper.map(movieFullInfo,MovieDto.class);
+        MovieDto movieDto=modelMapper.map(movie,MovieDto.class);
         List<MovieDto> movieDtoList=new ArrayList<>();
         movieDtoList.add(movieDto);
         return movieDtoList;
@@ -213,7 +209,5 @@ public class MovieServiceImpl implements MovieService {
         }
         Movie movie = movieRepo.findByImdbId(imdbId);
         return MovieUtil.getAllMovieDetailsByImdbId(movie.getImdbId());
-
     }
-
 }

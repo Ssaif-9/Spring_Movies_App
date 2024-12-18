@@ -16,7 +16,6 @@ public class AccountController {
 
     private final AccountService accountService;
 
-
     @Autowired
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
@@ -27,7 +26,6 @@ public class AccountController {
     public ResponseEntity<?> loginAccount(@RequestBody LoginRequest loginRequest) {
 
         Map<String, String>  loginResponse = accountService.login(loginRequest);
-
         return ResponseEntity.ok(loginResponse);
     }
 

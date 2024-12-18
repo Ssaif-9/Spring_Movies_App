@@ -7,6 +7,7 @@ public class MovieRating {
     private String source;
     @SerializedName("Value")
     private String value;
+
     public MovieRating(String source, String value) {
         this.source = source;
         this.value = value;

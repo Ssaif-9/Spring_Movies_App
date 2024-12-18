@@ -5,11 +5,11 @@ import java.util.List;
 public class PageResponse <T>{
     private Integer totalPages;
     private Long totalElements;
-    private List<?> entity;
+    private List<T> entity;
 
     public PageResponse() {}
 
-    public PageResponse(Integer totalPages, Long totalElements, List<?> entity) {
+    public PageResponse(Integer totalPages, Long totalElements, List<T> entity) {
         this.totalPages = totalPages;
         this.totalElements = totalElements;
         this.entity = entity;
@@ -35,7 +35,7 @@ public class PageResponse <T>{
         return entity;
     }
 
-    public void setEntity(List<?> entity) {
+    public void setEntity(List<T> entity) {
         this.entity = entity;
     }
 

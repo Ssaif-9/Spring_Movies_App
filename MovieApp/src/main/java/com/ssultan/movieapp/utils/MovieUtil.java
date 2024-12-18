@@ -24,7 +24,7 @@ public class MovieUtil {
         Gson jsonResponse =new Gson();
 
         MovieFullInfo movieFullInfo=jsonResponse.fromJson(responseResult,MovieFullInfo.class);
-        if (movieFullInfo.getTitle()==null){
+        if (movieFullInfo.getTitle()==null){ // check if exist movie or not
             throw new NotFoundMovieException("Movie with id ( "+imdbId+" ) not found");
         }
         return movieFullInfo;
@@ -44,7 +44,7 @@ public class MovieUtil {
         Gson jsonResponse =new Gson();
         MovieFullInfo movieFullInfo=jsonResponse.fromJson(responseResult,MovieFullInfo.class);
 
-        if (movieFullInfo.getTitle()==null){
+        if (movieFullInfo.getTitle()==null){  // check if exist movie or not
             throw new NotFoundMovieException("Movie with Title ( "+movieTitle+" ) and published at ( "+movieYear+" ) not found");
         }
         return movieFullInfo;

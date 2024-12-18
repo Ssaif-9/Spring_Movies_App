@@ -17,14 +17,14 @@ public interface MovieService {
     List<MovieDto> saveBatchMoviesByImdbId(List<String> movies);
     List<MovieDto> saveBatchMovieByImdbTitleAndYear(List<MovieOmdbRequest> movies);
 
-    void deleteMovie(Long movieId);
+    void deleteMovie(Long movieId); //not important
 
     MovieDto deleteMovieByImdbId(String imdbId);
     void deleteBatchMoviesByImdbId(List<String> imdbIds);
 
     //For User
     List<MovieDto> getAllMovies();
-    MovieFullInfo getMovieById(Long movieId);
+    MovieFullInfo getMovieById(Long movieId); //not important
 
     List<MovieDto> getMovieByTitle(String movieTitle);
     List<MovieDto> getMovieByImdbId(String movieImdbId);
